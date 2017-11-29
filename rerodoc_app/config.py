@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+#
+# This file is part of Invenio.
+# Copyright (C) 2017 RERO.
+#
+# Invenio is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# Invenio is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Invenio; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307, USA.
+#
+# In applying this license, RERO does not
+# waive the privileges and immunities granted to it by virtue of its status
+# as an Intergovernmental Organization or submit itself to any jurisdiction.
+
+"""RERO DOC Invenio application."""
+
+from __future__ import absolute_import, print_function
+
+
+# Identity function for string extraction
+def _(x):
+    return x
+
+# Default language and timezone
+BABEL_DEFAULT_LANGUAGE = 'en'
+BABEL_DEFAULT_TIMEZONE = 'Europe/Zurich'
+I18N_LANGUAGES = [
+]
+
+HEADER_TEMPLATE = 'invenio_theme/header.html'
+BASE_TEMPLATE = 'invenio_theme/page.html'
+COVER_TEMPLATE = 'invenio_theme/page_cover.html'
+SETTINGS_TEMPLATE = 'invenio_theme/page_settings.html'
+
+SECRET_KEY = 'default_key'
+
+# Theme
+THEME_SITENAME = _('rerodoc-app')
+
+RERODOC_APP_DEFAULT_VALUE = 'foobar'
+"""Default value for the application."""
+
+RERODOC_APP_BASE_TEMPLATE = BASE_TEMPLATE
+"""Default base template."""
