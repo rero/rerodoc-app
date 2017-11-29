@@ -35,6 +35,7 @@ include .editorconfig
 include .tx/config
 prune docs/_build
 recursive-include rerodoc_app *.po *.pot *.mo
+include development/continuous_integration/Dockerfile
 
 # added by check_manifest.py
 include *.rst
@@ -52,3 +53,6 @@ recursive-include examples *.py
 recursive-include examples *.sh
 recursive-include rerodoc_app *.html
 recursive-include tests *.py
+
+# added by check_manifest.py
+recursive-include development *.sh
