@@ -36,6 +36,7 @@ include .tx/config
 prune docs/_build
 recursive-include rerodoc_app *.po *.pot *.mo
 include development/continuous_integration/Dockerfile
+include deployment/docker/Dockerfile
 
 # added by check_manifest.py
 include *.rst

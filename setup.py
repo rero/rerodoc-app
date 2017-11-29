@@ -60,6 +60,26 @@ setup_requires = [
 
 install_requires = [
     'Flask-BabelEx>=0.9.2',
+    'invenio-app>=1.0.0b1',
+    'invenio-assets>=1.0.0b7',
+    'invenio-base>=1.0.0a16',
+    'invenio-cache>=1.0.0b1',
+    'invenio-config>=1.0.0b3',
+    'invenio-db>=1.0.0b9',
+    'invenio-i18n>=1.0.0b4',
+    'invenio-indexer>=1.0.0a10',
+    'invenio-jsonschemas>=1.0.0a7',
+    'invenio-marc21>=1.0.0a5',
+    'invenio-oaiserver>=1.0.0a14',
+    'invenio-pidstore>=1.0.0b2',
+    'invenio-query-parser>=0.6.0',
+    'invenio-records>=1.0.0b4',
+    'invenio-records-rest>=1.0.0b3',
+    'invenio-records-ui>=1.0.0b1',
+    'invenio-rest>=1.0.0b2',
+    'invenio-search>=1.0.0b1',
+    'invenio-search-ui>=1.0.0a9',
+    'invenio-theme>=1.0.0b4',
 ]
 
 packages = find_packages()

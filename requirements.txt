@@ -1,0 +1,3 @@
+# TODO: force the version by git tag
+-e git+git://github.com/rero/rerodoc-data.git#egg=rerodoc-data
+redis
