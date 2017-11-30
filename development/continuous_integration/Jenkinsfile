@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Get Dockerfile') {
             steps {
-                sh "curl -O https://raw.githubusercontent.com/rero/rerodoc-app/master/development/continius_integration/Dockerfile"
-                sh "curl -O https://raw.githubusercontent.com/rero/rerodoc-app/master/development/continius_integration/build_app.sh"
+                sh "curl -O https://raw.githubusercontent.com/rero/rerodoc-app/master/development/continuous_integration/Dockerfile"
+                sh "curl -O https://raw.githubusercontent.com/rero/rerodoc-app/master/development/continuous_integration/build_app.sh"
             }
         }
         stage('Build Test Docker Image') {
