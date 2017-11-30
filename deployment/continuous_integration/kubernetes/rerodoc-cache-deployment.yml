@@ -1,0 +1,21 @@
+apiVersion: extensions/v1
+kind: Deployment
+metadata:
+  name: doc-cache
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rerodoc
+        tier: cache
+    spec:
+      containers:
+      - name: rerodoc-cache
+        image: redis
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 6379
+          name: cache

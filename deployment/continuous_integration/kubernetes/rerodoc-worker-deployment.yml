@@ -1,0 +1,33 @@
+apiVersion: extensions/v1
+kind: Deployment
+metadata:
+  name: doc-worker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rerodoc
+        tier: worker
+    spec:
+      containers:
+      - name: rerodoc-worker
+        image: rabbitmq:3-management
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: worker-user
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: worker-password
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 30015
+          name: worker
+        - containerPort: 30016
+          name: ui

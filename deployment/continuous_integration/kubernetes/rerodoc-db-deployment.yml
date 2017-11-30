@@ -1,0 +1,36 @@
+apiVersion: extensions/v1
+kind: Deployment
+metadata:
+  name: doc-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rerodoc
+        tier: db
+    spec:
+      containers:
+      - name: rerodoc-db
+        image: postgres
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: db-user
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: db-name
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: db-password
+        ports:
+        - containerPort: 5432
+          name: db

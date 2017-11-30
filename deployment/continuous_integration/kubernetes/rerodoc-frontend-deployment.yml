@@ -1,0 +1,64 @@
+apiVersion: extensions/v1
+kind: Deployment
+metadata:
+  name: doc-frontend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rerodoc
+        tier: frontend
+    spec:
+      containers:
+      - name: rerodoc-app
+        image: rero/rerodoc-app:latest
+        imagePullPolicy: Always
+        env:
+        - name: PATH
+          value: /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/rerodoc/rerodoc/bin
+        - name: GET_HOSTS_FROM
+          value: dns
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: worker-user
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: worker-password
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: db-user
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: db-name
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rerodoc-app
+              key: db-password
+        - name: INVENIO_SEARCH_ELASTIC_HOSTS
+          value: doc-indexer:$(doc_INDEXER_SERVICE_PORT_API)
+        - name: INVENIO_SQLALCHEMY_DATABASE_URI
+          value: postgresql+psycopg2://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@doc-db:$(DOC_DB_SERVICE_PORT_DB)/$(POSTGRES_DB)
+        - name: INVENIO_CELERY_BROKER_URL
+          value: 'amqp://$(RABBITMQ_DEFAULT_USER):$(RABBITMQ_DEFAULT_PASS)@doc-worker:$(DOC_WORKER_SERVICE_PORT_WORKER)//'
+        - name: INVENIO_CELERY_RESULT_BACKEND
+          value: 'redis://doc-cache:$(DOC_CACHE_SERVICE_PORT_CACHE)/1'
+        - name: INVENIO_CACHE_REDIS_URL
+          value: 'redis://doc-cache:$(DOC_CACHE_SERVICE_PORT_CACHE)/1'
+        - name: INVENIO_ACCOUNTS_SESSION_REDIS_URL
+          value: 'redis://doc-cache:$(DOC_CACHE_SERVICE_PORT_CACHE)/0'
+        - name: INVENIO_DB_VERSIONING
+          value: '0'
+        - name: INVENIO_APP_ENABLE_SECURE_HEADERS
+          value: '0'
+        ports:
+        - containerPort: 5000

@@ -57,3 +57,6 @@ recursive-include tests *.py
 
 # added by check_manifest.py
 recursive-include development *.sh
+
+# added by check_manifest.py
+recursive-include deployment *.yml

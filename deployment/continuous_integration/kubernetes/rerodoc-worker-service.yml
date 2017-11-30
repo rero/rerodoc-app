@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: doc-worker
+  labels:
+    app: rerodoc
+    tier: worker
+spec:
+  type: NodePort
+  ports:
+    - port: 5672
+      nodePort: 30038
+      name: worker
+    - port: 15672
+      nodePort: 30039
+      name: ui
+  selector:
+    app: rerodoc
+    tier: worker
