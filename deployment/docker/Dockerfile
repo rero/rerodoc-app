@@ -22,6 +22,7 @@ COPY README.rst /rerodoc/rerodoc/src/rerodoc-app/
 COPY CHANGES.rst /rerodoc/rerodoc/src/rerodoc-app/
 COPY requirements.txt /rerodoc/rerodoc/src/rerodoc-app/
 COPY rerodoc_app /rerodoc/rerodoc/src/rerodoc-app/rerodoc_app
+COPY deployment/scripts/populate.sh /rerodoc/populate.sh
 #COPY deployment/scripts/populate.sh /rerodoc/populate.sh
 #COPY deployment/data/demo.json /rerodoc/data.json
 

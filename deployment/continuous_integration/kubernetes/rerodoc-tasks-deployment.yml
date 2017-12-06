@@ -1,18 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: doc-frontend
+  name: doc-tasks
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: rerodoc
-        tier: frontend
+        tier: tasks
     spec:
       containers:
       - name: rerodoc-app
         image: rero/rerodoc-app:latest
+        command: ["celery", "-A", "invenio_app", "worker"]
         imagePullPolicy: Always
         env:
         - name: PATH
@@ -60,5 +61,3 @@ spec:
           value: '0'
         - name: INVENIO_APP_ENABLE_SECURE_HEADERS
           value: '0'
-        ports:
-        - containerPort: 5000

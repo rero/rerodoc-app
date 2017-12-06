@@ -65,7 +65,7 @@ install_requires = [
     'invenio-base>=1.0.0a16',
     'invenio-cache>=1.0.0b1',
     'invenio-config>=1.0.0b3',
-    'invenio-db>=1.0.0b9',
+    'invenio-db[postgresql]>=1.0.0b9',
     'invenio-i18n>=1.0.0b4',
     'invenio-indexer>=1.0.0a10',
     'invenio-jsonschemas>=1.0.0a7',
@@ -80,6 +80,11 @@ install_requires = [
     'invenio-search>=1.0.0b1',
     'invenio-search-ui>=1.0.0a9',
     'invenio-theme>=1.0.0b4',
+    'invenio-access>=1.0.0b1',
+    'invenio-accounts>=1.0.0b10',
+    'invenio-admin>=1.0.0b4',
+    'invenio-celery>=1.0.0b3',
+    'invenio-oaiharvester>=1.0.0a3'
 ]
 
 packages = find_packages()

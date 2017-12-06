@@ -52,3 +52,35 @@ RERODOC_APP_DEFAULT_VALUE = 'foobar'
 
 RERODOC_APP_BASE_TEMPLATE = BASE_TEMPLATE
 """Default base template."""
+
+SEARCH_UI_JSTEMPLATE_RESULTS = \
+    'templates/rerodoc_data/briefview.html'
+
+JSONSCHEMAS_ENDPOINT = '/schema'
+JSONSCHEMAS_HOST = 'rerodoc.test.rero.ch'
+JSONSCHEMAS_REGISTER_ENDPOINTS_UI = True
+JSONSCHEMAS_REGISTER_ENDPOINTS_API = True
+JSONSCHEMAS_REPLACE_REFS = True
+JSONSCHEMAS_RESOLVE_SCHEMA = True
+
+RECORDS_REST_ENDPOINTS = dict(
+    recid=dict(
+        pid_type='recid',
+        pid_minter='bibid',
+        pid_fetcher='bibid',
+        search_index='records',
+        search_type=None,
+        record_serializers={
+            'application/json': ('invenio_records_rest.serializers'
+                                 ':json_v1_response'),
+        },
+        search_serializers={
+            'application/json': ('invenio_records_rest.serializers'
+                                 ':json_v1_search'),
+        },
+        list_route='/records/',
+        item_route='/records/<pid(recid):pid_value>',
+        default_media_type='application/json',
+        max_result_window=10000,
+    )
+)
