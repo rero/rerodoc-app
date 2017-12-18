@@ -35,4 +35,4 @@ invenio roles add admin@rero.ch superusers
 invenio roles add librarian@rero.ch cataloguer
 
 # harvest articles and books on the production server
-invenio oaiharvester harvest --signals -u http://doc.rero.ch/oai2d -s "article book" -d oia -m marcxml -k
+invenio oaiharvester harvest --signals -u http://doc.rero.ch/oai2d -s "postprint" -d oia -m marcxml -k -e 'utf-8'

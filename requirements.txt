@@ -1,4 +1,8 @@
 # TODO: force the version by git tag
 -e git+git://github.com/rero/rerodoc-data.git#egg=rerodoc-data
+
+#ChangeIt
+git+https://github.com/rero/invenio-oaiharvester#egg=invenio-oaiharverster
+
 redis
 flower
