@@ -60,14 +60,14 @@ JSONSCHEMAS_ENDPOINT = '/schema'
 JSONSCHEMAS_HOST = 'rerodoc.test.rero.ch'
 JSONSCHEMAS_REGISTER_ENDPOINTS_UI = True
 JSONSCHEMAS_REGISTER_ENDPOINTS_API = True
-JSONSCHEMAS_REPLACE_REFS = True
-JSONSCHEMAS_RESOLVE_SCHEMA = True
+JSONSCHEMAS_REPLACE_REFS = False
+JSONSCHEMAS_RESOLVE_SCHEMA = False
 
 RECORDS_REST_ENDPOINTS = dict(
     recid=dict(
         pid_type='recid',
-        pid_minter='bibid',
-        pid_fetcher='bibid',
+        pid_minter='rero_recid',
+        pid_fetcher='rero_recid',
         search_index='records',
         search_type=None,
         record_serializers={
@@ -84,3 +84,10 @@ RECORDS_REST_ENDPOINTS = dict(
         max_result_window=10000,
     )
 )
+OAIHARVESTER_WORKDIR='/Users/maj/devel/virtualenvs/rerodoc-app/var/instance'
+from jsonresolver import JSONResolver
+
+from jsonresolver.contrib.jsonref import json_loader_factory
+JSONSCHEMAS_LOADER_CLS = json_loader_factory(JSONResolver(
+    plugins=['invenio_jsonschemas.jsonresolver']
+))
