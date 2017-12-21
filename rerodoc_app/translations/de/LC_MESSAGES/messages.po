@@ -1,0 +1,171 @@
+# German translations for rerodoc.
+# Copyright (C) 2017 RERO DOC
+# This file is distributed under the same license as the rerodoc project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: rerodoc 0.1.0.dev0\n"
+"Report-Msgid-Bugs-To: doc.support@rero.ch\n"
+"POT-Creation-Date: 2017-03-02 15:29+0100\n"
+"PO-Revision-Date: 2017-02-22 08:17+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: rerodoc/config.py:19
+msgid "French"
+msgstr ""
+
+#: rerodoc/config.py:20
+msgid "German"
+msgstr ""
+
+#: rerodoc/config.py:21
+msgid "Italian"
+msgstr ""
+
+#: rerodoc/config.py:35
+msgid "rerodoc"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:1
+msgid "title"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:3
+msgid "authors"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:5
+msgid "document_type"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:6
+msgid "publication"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:8
+msgid "book"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:10
+msgid "fr"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:11
+msgid "en"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:12
+msgid "de"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:13
+msgid "es"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:14
+msgid "pt"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:15
+msgid "doc_type"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:16
+msgid "institutions"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:17
+msgid "keywords"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:18
+msgid "language"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:19
+msgid "RERO_DOC.NAVSITE.VALAIS"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:20
+msgid "RERO_DOC.NAVSITE.GENEVE"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:21
+msgid "RERO_DOC.NAVSITE.VAUD"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:22
+msgid "RERO_DOC.NAVSITE.NEUCHATEL"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:23
+msgid "RERO_DOC.NAVSITE.GENEVE.BAAGE"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:24
+msgid "RERO_DOC.NAVSITE.GENEVE.BPUGE"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:25
+msgid "RERO_DOC.NAVSITE.GENEVE.IHEID"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:26
+msgid "RERO_DOC.NAVSITE.VAUD.CIO"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:27
+msgid "RERO_DOC.NAVDOCTYPE.BOOK"
+msgstr ""
+
+#: rerodoc/manual_translations.txt:28
+msgid "RERO_DOC.NAVSITE.NEUCHATEL.BICJ"
+msgstr ""
+
+#: rerodoc/templates/rerodoc/record_detail.html:83
+msgid "See also"
+msgstr ""
+
+#: rerodoc/templates/rerodoc/record_detail.html:84
+msgid "Links"
+msgstr ""
+
+#: rerodoc/templates/rerodoc/record_detail.html:85
+msgid "Share"
+msgstr ""
+
+#: rerodoc/templates/rerodoc/record_detail.html:91
+msgid "Export As"
+msgstr ""
+
+#: rerodoc/templates/rerodoc/records_export_unsupported.html:28
+msgid "Unsupported export format"
+msgstr ""
+
+#: rerodoc/templates/rerodoc/records_export_unsupported.html:29
+msgid "The export format you are trying to access has been deprecated."
+msgstr ""
+
+#~ msgid "{{ key }}"
+#~ msgstr ""
+
+#~ msgid "{{ item.key }}"
+#~ msgstr ""
+
+#~ msgid "Title:"
+#~ msgstr ""
+
+#~ msgid "Welcome to %(module_name)s"
+#~ msgstr ""
+
+#~ msgid "RERO_DOC.NAVSITE.VAUD.IHEID"
+#~ msgstr ""
+

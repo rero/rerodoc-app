@@ -1,0 +1,134 @@
+{% extends config.BASE_TEMPLATE %}
+{% set title = config.THEME_SITENAME + " - Research. Shared." %}
+
+{%- block css %}
+    {{ super() }}
+    {%- assets "rerodoc_frontpage_css" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {%- endassets %}
+{%- endblock css %}
+
+{%- block page_body %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container">
+<h4>{{ config.THEME_SITENAME }}: ({{n_documents}} {{_('objects')}})</h4>
+<div id="collection" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#collection" data-slide-to="0" class="active"></li>
+        <li data-target="#collection" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="media">
+                <div class="media-left  media-top">
+                        <img class="media-object" src="/static/img/collections/col-revue-olympique-cio.jpg" alt="Image collection">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Olympic</h4>
+                    <p>
+                        Right from its foundation en 1894, the International Olympic Committee (IOC) was aware of the need to support the Olympic ideal in order to promote it sufficiently. In addition, the...
+                    </p>
+                    <p>
+                        <a class="btn btn-primary btn-sm" href="#" role="button">Collection Page &raquo;</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="media">
+                <div class="media-left  media-top">
+                        <img class="media-object" src="/static/img/collections/col-chronique-fr.jpg" alt="Image collection">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Chronique fribourgeoise</h4>
+                    <p>
+                        The Chronique Fribourgeoise (Fribourg's chronicle) is elaborated by a committee of the local French speaking society of historians, the Société d'histoire du canton de Fribourg, and published by the Bibliothèque...
+                    </p>
+                    <p>
+                        <a class="btn btn-primary btn-sm" href="#" role="button">{{_('Collection Page')}} &raquo;</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- Left and right controls -->
+    <a class="left carousel-control" href="#collection" role="button" data-slide="prev">
+        <span class="fa icon-prev fa-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">{{_('Previous')}}</span>
+    </a>
+    <a class="right carousel-control" href="#collection" role="button" data-slide="next">
+        <span class="fa icon-next fa-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">{{_('Next')}}</span>
+    </a>
+</div>
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <h2>{{_('Institutions')}}</h2>
+            <p>
+                <ul>
+                {% for institution in institutions %}
+                <li>
+                    <a class="quicknote" href="/search?institutions={{institution.key}}">{{ institution.key|translate }} ({{institution.doc_count}})</a>
+                </li>
+                {% endfor %}
+
+                </ul>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>{{_('doc_type')}}</h2>
+            <p>
+                <ul>
+                {% for doc_type in doc_types %}
+                <li>
+                    <a class="quicknote" href="/search?doc_type={{doc_type.key}}">{{ doc_type.key|translate }} ({{doc_type.doc_count}})</a>
+                </li>
+                {% endfor %}
+
+                </ul>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>{{_('Digitized Press')}}</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default pull-right" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-3 col-sm-6 news">
+            <h2>{{_('News')}}</h2>
+            <div class="list-group">
+
+              <span class="list-group-item">
+                  <img src="/static/img/news/random_headlines.jpg" alt="">
+                  <h4 class="list-group-item-heading">FRERO DOC Visitor Statistics</h4>
+                  <p class="list-group-item-text text-right">2015/10/1</p>
+              </span>
+
+              <span class="list-group-item">
+                  <img src="/static/img/collections/col-arte_nuevo-unine.png" alt="">
+                  <h4 class="list-group-item-heading">New collection: Arte Nuevo</h4>
+                  <p class="list-group-item-text text-right">2015/03/10</p>
+              </span>
+
+              <span class="list-group-item">
+                  <img src="/static/img/collections/col-revue-olympique-cio.jpg" alt="">
+                  <h4 class="list-group-item-heading">New collection: Olympic Review</h4>
+                  <p class="list-group-item-text text-right">2015/03/09</p>
+              </span>
+          </div>
+          <p><a class="btn btn-default pull-right" href="#" role="button">More &raquo;</a></p>
+      </div>
+  </div>
+
+</div> <!-- /container -->
+</div>
+{%- endblock page_body %}
+

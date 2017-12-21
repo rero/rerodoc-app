@@ -1,0 +1,20 @@
+<oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+    {% if record.language %}
+    <dc:language>{{record.language}}</dc:language>
+    {% endif %}
+
+    {% if record.title and record.title.full %}
+    <dc:title>{{ record.title.full }}</dc:title>
+    {% endif %}
+
+    <dc:creator>Souza, Adelaïde-Marie-Emilie Filleul de Flahaut de</dc:creator>
+
+    {%- set files = record|get_files_list -%}
+    {% for file in files %}
+    <dc:identifier>{{url_for('invenio_records_ui.recid_files', pid_value=record.get('recid'), filename=file.get('file_name'), _external=True)}}</dc:identifier>
+    {% endfor %}
+
+    {% if record.publication_date and record.publication_date.full %}
+    <dc:date>{{ record.publication_date.full }}</dc:date>
+    {% endif %}
+</oai_dc:dc>

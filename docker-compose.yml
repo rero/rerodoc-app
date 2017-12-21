@@ -76,9 +76,9 @@ postgresql:
   restart: "always"
   image: postgres
   environment:
-    - POSTGRES_USER=reroils
-    - POSTGRES_DB=reroils
-    - POSTGRES_PASSWORD=dbpass123
+    - POSTGRES_USER=rerodoc
+    - POSTGRES_DB=rerodoc
+    - POSTGRES_PASSWORD=rerodoc
   ports:
     - "5432:5432"
 

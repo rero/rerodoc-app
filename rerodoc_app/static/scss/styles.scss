@@ -1,0 +1,24 @@
+$icon-font-path: "/static/node_modules/bootstrap-sass/assets/fonts/";
+$fa-font-path: "/static/node_modules/font-awesome/fonts";
+
+@import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "../node_modules/font-awesome/scss/font-awesome";
+
+.highlight {
+  em {
+    color: $brand-primary;
+  }
+}
+
+invenio-search-facets {
+    ul {
+        margin: 0;
+    }
+    input[type="checkbox"] {
+        margin-right: 6px;
+    }
+}
+
+invenio-search-results li {
+    list-style: none;
+}

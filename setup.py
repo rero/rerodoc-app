@@ -60,6 +60,8 @@ setup_requires = [
 
 install_requires = [
     'Flask-BabelEx>=0.9.2',
+    'Flask-CLI>=0.4.0',
+    'Flask-CORS>=2.1.0',
     'invenio-app>=1.0.0b1',
     'invenio-assets>=1.0.0b7',
     'invenio-base>=1.0.0a16',
@@ -76,6 +78,8 @@ install_requires = [
     'invenio-records>=1.0.0b4',
     'invenio-records-rest>=1.0.0b3',
     'invenio-records-ui>=1.0.0b1',
+    'invenio-files-rest>=1.0.0a22',
+    'invenio-records-files>=1.0.0a10',
     'invenio-rest>=1.0.0b2',
     'invenio-search[elasticsearch2]>=1.0.0b1',
     'invenio-search-ui>=1.0.0a9',
@@ -84,7 +88,15 @@ install_requires = [
     'invenio-accounts>=1.0.0b10',
     'invenio-admin>=1.0.0b4',
     'invenio-celery>=1.0.0b3',
-    'invenio-oaiharvester>=1.0.0a3'
+    'invenio-oaiharvester>=1.0.0a3',
+    'invenio-collections>=1.0.0a4',
+    'PyPDF2 >=1.26.0',
+    'PyLD>=0.8.2',
+    'slate3k>=0.5.3',
+    'Markdown>=2.6.10',
+    'rdflib>=4.2.2',
+    'rdflib-jsonld>=0.4.0',
+    'Wand>=0.4.4'
 ]
 
 packages = find_packages()
@@ -111,6 +123,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'flask.commands': [
+            'utils = rerodoc_app.cli:utils',
+        ],
         'invenio_base.apps': [
             'rerodoc_app = rerodoc_app:RerodocApp',
         ],
@@ -120,6 +135,11 @@ setup(
         'invenio_config.module': [
             'rerodoc_app = rerodoc_app.config',
         ],
+        'invenio_assets.bundles': [
+            'rerodoc_search_js = rerodoc_app.bundles:search_js',
+            'rerodoc_css = rerodoc_app.bundles:css',
+            'rerodoc_frontpage_css = rerodoc_app.bundles:frontpage_css'
+        ]
         # TODO: Edit these entry points to fit your needs.
         # 'invenio_access.actions': [],
         # 'invenio_admin.actions': [],

@@ -1,0 +1,43 @@
+#collection {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #collection {
+        display: block;
+
+        .carousel-inner > .item > .media {
+            width: 70%;
+            margin: auto;
+        }
+
+        .carousel-inner{
+            .media-body {
+                height: 250px;
+            }
+            .media-left {
+                height: 250px;
+                width: 250px;
+                img {
+                    margin-right: 20px;
+                    margin-top: 28px;
+                }
+            }
+        }
+
+        .carousel-indicators li {
+            border: 1px solid black;
+        }
+
+        .carousel-indicators .active {
+            background-color: black;
+        }
+    }
+}
+
+.news img {
+    max-width: 36px;
+    max-height: 36px;
+    float: left;
+    margin-right: 6px;
+}

@@ -3,6 +3,6 @@
 
 #ChangeIt
 git+https://github.com/rero/invenio-oaiharvester#egg=invenio-oaiharverster
-
+git+https://github.com/rero/invenio-collections#egg=invenio-collections
 redis
 flower

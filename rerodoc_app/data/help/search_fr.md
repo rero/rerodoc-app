@@ -1,0 +1,3 @@
+# Aide pour la recherche
+
+Notre moteur de recherche propose des fonctionnalités similaires à celles des moteurs de recherche actuellement disponibles sur le Web, tels que Google. La nature des recherches bibliographiques diffère cependant de la recherche de pages web. Nous proposons donc des extensions permettant des recherches structurées complexes et précises, dont une recherche combinée s'effectuant sur les metadonnées, le contenu des fichiers et les références de chaque notice. Cette page répertorie les trucs et astuces pouvant vous être utiles.

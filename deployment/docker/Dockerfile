@@ -3,7 +3,7 @@ FROM python:3.5-slim
 LABEL maintainer="software@rero.ch"
 LABEL description="RERO DOC Invenio application by RERO."
 
-RUN apt-get update && apt-get install -y curl git gcc \
+RUN apt-get update && apt-get install -y curl git gcc libmagickwand-dev\
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get install -y nodejs \
     && pip install -U setuptools pip && \
@@ -22,6 +22,7 @@ COPY README.rst /rerodoc/rerodoc/src/rerodoc-app/
 COPY CHANGES.rst /rerodoc/rerodoc/src/rerodoc-app/
 COPY requirements.txt /rerodoc/rerodoc/src/rerodoc-app/
 COPY rerodoc_app /rerodoc/rerodoc/src/rerodoc-app/rerodoc_app
+COPY data /rerodoc/data
 COPY deployment/scripts/populate.sh /rerodoc/populate.sh
 #COPY deployment/scripts/populate.sh /rerodoc/populate.sh
 #COPY deployment/data/demo.json /rerodoc/data.json

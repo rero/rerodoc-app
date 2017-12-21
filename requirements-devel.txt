@@ -48,11 +48,13 @@
 -e git+https://github.com/inveniosoftware/invenio-search#egg=invenio-search[elasticsearch2]
 -e git+https://github.com/inveniosoftware/invenio-search-ui#egg=invenio-search-ui
 -e git+https://github.com/inveniosoftware/invenio-theme#egg=invenio-theme
-
+-e git+https://github.com/inveniosoftware/invenio-records-files#egg=invenio-records-files
 -e git+https://github.com/inveniosoftware/invenio-access.git#egg=invenio-access
 -e git+https://github.com/inveniosoftware/invenio-accounts.git#egg=invenio-accounts
 -e git+https://github.com/inveniosoftware/invenio-admin.git#egg=invenio-admin
 -e git+https://github.com/inveniosoftware/invenio-celery.git#egg=invenio-celery
+-e git+https://github.com/inveniosoftware/invenio-collections.git#egg=invenio-collections
+-e git+https://github.com/inveniosoftware/invenio-files-rest.git#egg=invenio-files-rest
 
 #ChangeIt
 -e git+https://github.com/rero/invenio-oaiharvester#egg=invenio-oaiharverster
