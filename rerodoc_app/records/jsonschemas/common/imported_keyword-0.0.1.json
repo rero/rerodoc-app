@@ -1,0 +1,39 @@
+{
+  "title": "Subjects or keywords imported from external catalogs",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "readOnly": true,
+  "items": {
+    "title": "List of subjects or keywords",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["value", "language", "vocabulary"],
+    "properties": {
+      "value": {
+        "title": "Subjects or keywords",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 3
+        }
+      },
+      "language": {
+        "$ref": "lang-0.0.1.json"
+      },
+      "vocabulary": {
+        "type": "string",
+        "default": "rero",
+        "enum": [
+          "rero",
+          "cjurivoc",
+          "chrero",
+          "rerovoc",
+          "jurivoc",
+          "lcsh",
+          "mesh"
+        ]
+      }
+    }
+  }
+}

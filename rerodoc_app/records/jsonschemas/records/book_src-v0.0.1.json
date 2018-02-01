@@ -1,0 +1,62 @@
+{
+    "title": "Book",
+    "description": "A book document...",
+    "$schema": "http://json-schema.o..#",
+    "required": [
+        "$schema",
+        "title",
+        "language",
+        "recid"
+    ],
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "title": "Schema",
+            "description": "Schema to validate book records against.",
+            "type": "string",
+            "minLength": 7
+        },
+        "recid":{"$ref": "common/recid-0.0.1.json"},
+        "reroid": {"$ref": "common/reroid-0.0.1.json"},
+        "isbn":{"$ref": "book/isbn-0.0.1.json"},
+        "language": {"$ref": "common/language-0.0.1.json"},
+        "title": {"$ref": "common/title-0.0.1.json"},
+        "other_title": {"$ref": "common/other_title-0.0.1.json"},
+        "contributor": {"$ref": "common/contributor-0.0.1.json"},
+        "meeting": {"$ref": "common/meeting-0.0.1.json"},
+        "edition": {"$ref": "common/edition-0.0.1.json"},
+        "publication": {"$ref": "common/publication-0.0.1.json"},
+        "print": {"$ref": "common/print-0.0.1.json"},
+        "digitization": {"$ref": "common/digitization-0.0.1.json"},
+        "series": {"$ref": "common/series-0.0.1.json"},
+        "note": {"$ref": "common/note-0.0.1.json"},
+        "content_note": {"$ref": "common/content_note-0.0.1.json"},
+        "summary": {"$ref": "common/summary-0.0.1.json"},
+        "imported_keyword": {"$ref": "common/imported_keyword-0.0.1.json"},
+        "keyword": {"$ref": "common/keyword-0.0.1.json"},
+        "other_edition": {"$ref": "common/other_edition-0.0.1.json"},
+        "institution": {"$ref": "common/institution-0.0.1.json"},
+        "document": {"$ref": "common/document-0.0.1.json"},
+        "external_link": {"$ref": "common/external_link-0.0.1.json"},
+        "type": {"$ref": "common/type-0.0.1.json"},
+        "specific_collection": {"$ref": "common/specific_collection-0.0.1.json"},
+        "udc": {"$ref": "common/udc-0.0.1.json"},
+        "access_restriction": {"$ref": "common/access_restriction-0.0.1.json"},
+        "_oai": {"$ref": "oaiserver/internal-v1.0.0.json"},
+        "_files": {
+            "description": "List of files attached to the record.",
+            "items": {
+              "$ref": "records-files/records-files-v1.0.0.json"
+            },
+            "type": "array"
+          },
+        "_collections": {
+            "description": "Specific collections.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "additionalProperties": false
+}

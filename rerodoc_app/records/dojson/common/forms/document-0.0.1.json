@@ -1,0 +1,39 @@
+{
+	"title": "Documents",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{    	
+    	"key": "document",
+    	"type": "tabarray",
+    	"add": "New",
+    	"tabType": "top",
+    	"htmlClass": "col-md-12",
+    	"remove": "Delete",
+    	"style": {
+    	 	"remove": "btn-danger"
+    	},
+    	"title": "{{ value.name || 'Tab '+$index }}",
+    	"items": [{
+    		"type": "section",
+    		"htmlClass": "row",
+    		"items": [{
+    			"type": "section",
+    			"htmlClass": "col-md-8",
+    			"items": [
+    			  "document[].name",
+                  "document[].label",
+                  "document[].url" 
+    			]
+    		}, {
+				"type": "section",
+    			"htmlClass": "col-md-4",
+    			"items": [
+                  "document[].size",
+                  "document[].order",
+                  "document[].mime" 
+    			   
+    			]
+    		}]	
+    	}]
+    }]
+}

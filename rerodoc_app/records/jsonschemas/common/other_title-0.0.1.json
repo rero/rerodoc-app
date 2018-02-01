@@ -1,0 +1,26 @@
+{
+  "title": "Alternative document title",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["language", "main"],
+    "properties": {
+      "language": {
+        "$ref": "lang-0.0.1.json"
+      },
+      "main": {
+        "title": "Main title of the document",
+        "type": "string",
+        "minLength": 3
+      },
+      "sub": {
+        "title": "Subtitle of the document",
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  }
+}

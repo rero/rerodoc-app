@@ -1,0 +1,40 @@
+{
+	"title": "External Links",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{    	
+    	"key": "external_link",
+    	"type": "tabarray",
+    	"add": "New",
+    	"tabType": "top",
+    	"htmlClass": "col-md-12",
+    	"remove": "Delete",
+    	"style": {
+    	 	"remove": "btn-danger"
+    	},
+    	"title": "{{ value.label || 'Tab '+$index }}",
+    	"items": [{
+    		"type": "section",
+    		"htmlClass": "row",
+    		"items": [{
+    			"type": "section",
+    			"htmlClass": "col-md-8",
+    			"items": [
+    			    {
+                    	"key": "external_link[].url"
+                	},
+                    "external_link[].datetime"
+    			]
+    		}, {
+				"type": "section",
+    			"htmlClass": "col-md-4",
+    			"items": [
+    			    {
+                    	"key": "external_link[].label",
+                    	"condition": "model.external_link[arrayIndex].url"
+                	}
+    			]
+    		}]	
+    	}]
+    }]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "General Note",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "type": "string",
+    "minLength": 3
+  }
+}

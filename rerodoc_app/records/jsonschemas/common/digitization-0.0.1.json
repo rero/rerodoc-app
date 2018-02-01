@@ -1,0 +1,24 @@
+{
+  "title": "Digitization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["digitizer"],
+  "properties": {
+    "location": {
+      "title": "Location",
+      "type": "string",
+      "minLength": 3
+    },
+    "digitizer": {
+      "title": "Agency",
+      "minLength": 3,
+      "description": "In charge of the digitization.",
+      "type": "string"
+    },
+    "date": {
+      "title": "Date",
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

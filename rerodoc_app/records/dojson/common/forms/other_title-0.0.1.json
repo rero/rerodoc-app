@@ -1,0 +1,25 @@
+{
+    "title": "Other Titles",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-8",
+        "items": [
+            "other_title.maintitle",
+            {
+                "key": "other_title.subtitle",
+                "condition": "model.other_title.maintitle"
+            }
+        ]
+    },{
+        "type": "section",
+        "htmlClass": "col-md-4",
+        "items": [{
+            "key": "other_title.lang",
+            "type": "select",
+            "titleMap": { "$ref": "/forms/common/lang"
+            }
+        }]
+    }]
+}

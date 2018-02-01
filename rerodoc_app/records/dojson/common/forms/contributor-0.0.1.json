@@ -1,0 +1,49 @@
+{
+	"title": "Authors",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+    	"key": "contributor",
+    	"type": "tabarray",
+    	"add": "New",
+    	"tabType": "top",
+    	"htmlCss": "col-md-12",
+    	"remove": "Delete",
+    	"style": {
+    	 	"remove": "btn-danger"
+    	},
+    	"title": "{{ value.name || 'Tab '+$index }}",
+    	"items": [{
+    		"type": "section",
+    		"htmlClass": "row",
+    		"items": [{
+    			"type": "section",
+    			"htmlClass": "col-md-8",
+    			"items": [
+    			    "authors[].name",
+    			    {
+                    	"key": "authors[].date",
+                    	"condition": "model.authors[arrayIndex].name"
+                	},
+    			    {
+                    	"key": "authors[].affiliation",
+                    	"condition": "model.authors[arrayIndex].name"
+                	}
+    			]
+    		}, {
+				"type": "section",
+    			"htmlClass": "col-md-4",
+    			"items": [
+    			    {
+                        "type": "asyncautocomplete",
+                        "key": "authors[].orcid"
+                    },
+    			    {
+                    	"key": "authors[].role",
+                    	"condition": "model.authors[arrayIndex].name"
+                	}
+    			]
+    		}]
+    	}]
+    }]
+}

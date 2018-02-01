@@ -41,8 +41,6 @@ from werkzeug.utils import import_string
 
 from invenio_search import RecordsSearch
 
-from .receivers import connect_receivers
-
 blueprint = Blueprint(
     'rerodoc_app',
     __name__,
@@ -51,24 +49,19 @@ blueprint = Blueprint(
 )
 
 
-connect_receivers()
-
 @blueprint.route("/")
 def index():
     """Home Page."""
     search = RecordsSearch(index='records')[0:0]
     search.aggs.bucket('institutions', 'terms', field='_collections',
-                       size=0, include='RERO_DOC\.NAVSITE\.[A-Z]+')
+                       size=1000, include='RERO_DOC\.NAVSITE\.[A-Z]+')
     search.aggs.bucket('doc_type', 'terms', field='_collections',
-                       size=0, include='RERO_DOC.NAVDOCTYPE\.[A-Z]+')
-    # search.aggs.bucket('institutions', 'terms',
-    #                    field='institution.code', size=0)
-    # search.aggs.bucket('doc_type', 'terms',
-    #                    field='document_type.main', size=0)
+                       size=1000, include='RERO_DOC.NAVDOCTYPE\.[A-Z]+')
     results = search.execute()
     institutions = results.aggregations.institutions.to_dict().get('buckets')
+    # institutions = {}
     doc_types = results.aggregations.doc_type.to_dict().get('buckets')
-    return render_template('rerodoc/index.html', institutions=institutions,
+    return render_template('rerodoc_app/index.html', institutions=institutions,
                            doc_types=doc_types, n_documents=results.hits.total)
 
 
@@ -95,7 +88,7 @@ def news():
         abort(404)
     with open(news_file_name) as news_file:
         content = Markup(markdown.markdown(news_file.read()))
-    return render_template('rerodoc/news.html', content=content)
+    return render_template('rerodoc_app/news.html', content=content)
 
 
 @blueprint.route("/help")
@@ -109,7 +102,7 @@ def help():
         abort(404)
     with open(news_file_name) as news_file:
         content = Markup(markdown.markdown(news_file.read()))
-    return render_template('rerodoc/news.html', content=content)
+    return render_template('rerodoc_app/news.html', content=content)
 
 
 @blueprint.route("/help/search")
@@ -123,7 +116,7 @@ def help_search():
         abort(404)
     with open(news_file_name) as news_file:
         content = Markup(markdown.markdown(news_file.read()))
-    return render_template('rerodoc/news.html', content=content)
+    return render_template('rerodoc_app/news.html', content=content)
 
 
 @blueprint.route("/help/glossary")
@@ -131,13 +124,13 @@ def help_search():
 def help_glossary():
     """To do."""
     current_language = current_app.extensions.get('invenio-i18n').language
-    news_file_name = join(dirname(__file__), "data", "help"
+    news_file_name = join(dirname(__file__), "data", "help",
                           "glossary_%s.md" % current_language)
     if not isfile(news_file_name):
         abort(404)
     with open(news_file_name) as news_file:
         content = Markup(markdown.markdown(news_file.read()))
-    return render_template('rerodoc/news.html', content=content)
+    return render_template('rerodoc_app/news.html', content=content)
 
 
 def records_ui_export(pid, record, template=None, format='json', **kwargs):
@@ -174,31 +167,245 @@ def records_ui_export(pid, record, template=None, format='json', **kwargs):
 @blueprint.app_template_filter()
 def format_metadata(key, data, lang='en'):
     """To do."""
-    value = data.get(key, '')
-    if key == 'document_type':
-        return _(value.get('main')).capitalize()
-    if key == 'language':
-        return translate_language(value, lang)
-    if key == 'udc':
-        return value.get(lang)
-    if key == 'rero_id':
-        return '<a href="%s">%s</a>' % (value, value.split('/')[-1])
+    def join(values, sep=', '):
+        values = [v for v in values if v]
+        return sep.join(values)
+    if key == 'title':
+        titles = []
+        for title in data.get(key, []):
+            titles.append({
+                'label': 'title_' + title.get('language'),
+                'value': [join([title.get('main'), title.get('sub')], ' : ')]
+            })
+        return titles
+    if key == 'other_title':
+        other_titles = []
+        for title in data.get(key, []):
+            other_titles.append({
+                'label': 'other_title_' + title.get('language'),
+                'value': [join([title.get('main'), title.get('sub')], ' : ')]
+            })
+        return other_titles
+    if key in ['author', 'editor', 'thesis director',
+               'thesis codirector', 'printer']:
+        authors = []
+        for contributor in data.get('contributor', []):
+            if contributor.get('role') == key:
+                author = contributor.get('name')
+                if contributor.get('type') == 'person':
+                    date = join([
+                        contributor.get('birth_date', '')[0:4],
+                        contributor.get('death_date', '')][0:4], '-')
+                    author = join([author, date], ', ')
+                    if contributor.get('affiliation'):
+                        author = author + ' (%s)' % \
+                                 contributor.get('affiliation')
+                    author = author + '.'
+                    author = join([author, contributor.get('orcid')], ' ')
+                else:
+                    author = author + '.'
+                authors.append(author)
+        if not authors:
+            return []
+        return [{
+            'label': key,
+            'value': authors
+        }]
+    if key == 'edition':
+        edition = data.get(key)
+        if not edition:
+            return []
+        return [{
+            'label': key,
+            'value': [join([
+                edition.get('statement'),
+                edition.get('remainder')], ' / ')]
+        }]
+    if key == 'publication':
+        pub = data.get(key)
+        if not pub:
+            return []
+        publication = join([
+                pub.get('location'),
+                pub.get('publisher')], ' : ')
+        publication = join([
+            publication,
+            pub.get('date_label')], ', ')
+        return [{
+            'label': key,
+            'value': [publication]
+        }]
+    if key == 'print':
+        _print = data.get(key)
+        if not _print:
+            return []
+        return [{
+            'label': key,
+            'value': [join([
+                _print.get('location'),
+                _print.get('printer')], ' : ')
+            ]
+        }]
+    if key == 'collation':
+        collations = []
+        for doc in data.get('document', []):
+            phys_desc = doc.get('physical_description')
+            if phys_desc:
+                collation = join([
+                    phys_desc.get('extent'),
+                    phys_desc.get('details')
+                ], ' : ')
+                collation = join([
+                    collation,
+                    phys_desc.get('dimensions')
+                ])
+                collations.append(collation)
+        if not collations:
+            return []
+        return [{
+            'label': key,
+            'value': collations
+        }]
+    if key == 'series':
+        series = data.get(key)
+        if not series:
+            return []
+        return [{
+            'label': key,
+            'value': [join([
+                series.get('name'),
+                series.get('volume')], ' ; ')]
+        }]
+    if key == 'imported_keyword':
+        keywords = []
+        for keyword in data.get(key, []):
+            keywords.append({
+                'label': key + '_' + keyword.get('vocabulary'),
+                'value': [join(keyword.get('value'), ' - ')]
+                })
+        return keywords
     if key == 'keyword':
-        to_return = []
-        for keyword in value:
-            to_return.append("; ".join(keyword.get('content')))
-        return "<br/>".join(to_return)
+        keywords = []
+        for keyword in data.get(key, []):
+            keywords.append(join(keyword.get('value'), ' ; '))
+        if not keywords:
+            return []
+        return [{
+            'label': key,
+            'value': keywords
+        }]
+    if key in ['udc']:
+        from .udc.udc import get_udc
+        if not data.get(key):
+            return []
+        return [{
+            'label': key,
+            'value': [get_udc(data.get(key)).get(lang)]
+        }]
+    if key == 'meeting':
+        meet = data.get(key)
+        if not data.get(key):
+            return []
+        meeting = join([
+                meet.get('number'),
+                meet.get('date'),
+                meet.get('location')], ' : ')
+        if meeting:
+            meeting = '(%s)' % meeting
+        meeting = join([
+            meet.get('name'),
+            meeting
+            ], ' ')
+        return [{
+            'label': key,
+            'value': [meeting]
+        }]
 
-    if isinstance(value, str):
-        return value
-    if isinstance(value, dict):
-        if value.get('full'):
-            return value.get('full')
-    if isinstance(value, list) and value:
-        if isinstance(value[0], str):
-            return ", ".join(value)
-        if isinstance(value[0], dict) and value and value[0].get('full'):
-            return ", ".join([v.get('full') for v in value])
+    if key in ['other_edition']:
+        editions = []
+        for edition in data.get(key, []):
+            editions.append('<a href="%s">%s</a>' % (
+                edition.get('url'),
+                edition.get('type')
+            ))
+        if not editions:
+            return []
+        return [{
+            'label': key,
+            'value': editions
+        }]
+    if key in ['external_link']:
+        links = []
+        for link in data.get(key, []):
+            links.append('<a href="%s">%s</a>' % (
+                link.get('url'),
+                link.get('label')
+            ))
+        if not links:
+            return []
+        return [{
+            'label': key,
+            'value': links
+        }]
+    if key == 'publication':
+        pub = data.get(key)
+        if not data.get(key):
+            return []
+        publication = join([
+                pub.get('location'),
+                pub.get('publisher')], ' : ')
+        publication = join([
+            publication,
+            pub.get('date_label')], ', ')
+        return [{
+            'label': key,
+            'value': [publication]
+        }]
+    if key == 'digitization':
+        if not data.get(key):
+            return []
+        digit = data.get(key)
+        digitization = join([
+                digit.get('location'),
+                digit.get('digitizer')], ' : ')
+        digitization = join([
+            digitization,
+            digit.get('date')], ', ')
+        return [{
+            'label': key,
+            'value': [digitization]
+        }]
+    if key in ['type']:
+        if not data.get(key):
+            return []
+        _type = data.get(key)
+        return [{
+            'label': key,
+            'value': [join([_type.get('main'),
+                            _type.get('sub')], ' > ')]
+        }]
+    if key == 'reroid':
+        if not data.get(key):
+            return []
+        reroid = data.get(key)
+        return [{
+            'label': key,
+            'value': ['<a href="%s">%s</a>' % (
+                reroid,
+                reroid.split('/')[-1]
+            )]
+        }]
+    if key in ['isbn', 'language', 'content_note', 'note', 'recid']:
+        if not data.get(key):
+            return []
+        value = data.get(key)
+        if isinstance(value, str):
+            value = [value]
+        return [{
+            'label': key,
+            'value': list(value)
+        }]
+    return []
 
 
 @blueprint.app_template_filter()
@@ -272,7 +479,7 @@ def facebook(record, lang='en'):
     link = 'https://www.facebook.com/sharer.php?s=100'
     url = permalink(record)
     link += "&p[url]=%s" % url
-    title = record.get('title', {}).get('full')
+    title = record.get('title', [{}])[0].get('main')
     if title:
         link += "&p[title]=%s" % title
     summary = None

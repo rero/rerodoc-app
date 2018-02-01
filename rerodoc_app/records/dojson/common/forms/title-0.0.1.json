@@ -1,0 +1,25 @@
+{
+    "title": "Title",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-8",
+        "items": [
+            "title.maintitle",
+            {
+                "key": "title.subtitle",
+                "condition": "model.title.maintitle"
+            }
+        ]
+    },{
+        "type": "section",
+        "htmlClass": "col-md-4",
+        "items": [{
+            "key": "title.lang",
+            "type": "select",
+            "titleMap": { "$ref": "/forms/common/lang"
+            }
+        }]
+    }]
+}

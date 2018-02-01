@@ -1,0 +1,37 @@
+{
+  "title": "Publication",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["publisher"],
+  "properties": {
+    "location": {
+      "title": "Location",
+      "type": "string",
+      "minLength": 3
+    },
+    "publisher": {
+      "title": "Publisher",
+      "description": "name of the publisher",
+      "type": "string",
+      "minLength": 3
+    },
+    "date_label": {
+      "title": "Publication date",
+      "description": "free form of the publication period",
+      "type": "string",
+      "minLength": 3
+    },
+    "start_date": {
+      "title": "From date",
+      "description": "begining publication period",
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_date": {
+      "title": "To date",
+      "description": "end of publication period",
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

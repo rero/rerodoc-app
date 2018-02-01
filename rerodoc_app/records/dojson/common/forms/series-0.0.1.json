@@ -1,0 +1,22 @@
+{
+    "title": "Series",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "series.name"
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                {
+                    "key": "series.volume",
+                    "condition": "model.series.name"
+                }
+            ]
+        }
+    ]
+}

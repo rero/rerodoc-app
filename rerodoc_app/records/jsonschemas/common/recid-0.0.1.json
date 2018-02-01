@@ -1,0 +1,7 @@
+{
+  "title": "Bibliographic Identifier",
+  "description": "main bibliographic identifier",
+  "readOnly": true,
+  "type": "string",
+  "minLength": 1
+}

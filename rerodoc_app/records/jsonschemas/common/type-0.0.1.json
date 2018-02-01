@@ -1,0 +1,45 @@
+{
+  "title": "Document type",
+  "type": "object",
+  "required": ["main"],
+  "additionalProperties": false,
+  "readOnly": true,
+  "properties": {
+    "main": {
+      "title": "Main Document Type",
+      "type": "string",
+      "enum": [
+        "book",
+        "journal",
+        "thesis",
+        "postprint",
+        "preprint",
+        "dissertation",
+        "report",
+        "newspaper",
+        "partition",
+        "newspapers",
+        "map",
+        "audio",
+        "print_media",
+        "issue"
+      ]
+    },
+    "sub": {
+      "title": "Secoundary Doucment Type",
+      "type": "string",
+      "enum": [
+        "art_journal",
+        "diss_master",
+        "th_phd",
+        "diss_bachelor",
+        "art_inbook",
+        "diss_cont_edu",
+        "art_inproc",
+        "th_habilit",
+        "book_monogr",
+        "book_proceed"
+      ]
+    }
+  }
+}

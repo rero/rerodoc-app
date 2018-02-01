@@ -1,0 +1,29 @@
+{
+    "title": "Meeting",
+    "type": "object",
+    "required": ["name"],
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "title": "name",
+            "type": "string",
+            "minLength": 3
+        },
+        "location": {
+            "title": "location",
+            "type": "string",
+            "minLength": 3
+        },
+        "date": {
+            "title": "Meeting date event",
+            "type": "string",
+            "format": "date-time"
+        },
+        "number": {
+            "title": "Number",
+            "description": "meeting number",
+            "type": "string",
+            "minLenght": 1
+        }
+    }
+}

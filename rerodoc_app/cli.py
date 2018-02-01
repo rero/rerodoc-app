@@ -245,3 +245,35 @@ def get_files(recid, verbose):
     uuid, rec = resolver.resolve(recid)
     import pprint
     pprint.pprint(rec.files.dumps())
+
+    import jsonref
+    from jsonref import JsonLoader
+    import json
+    data = json.load(open(args[0]))
+
+
+@utils.command()
+@with_appcontext
+@click.argument('source', type=click.File('r'), default=sys.stdin)
+@click.option('-v', '--verbose', count=True)
+def compile_schema(source, verbose):
+    """Resolve $ref in a jsonschema file."""
+    import jsonref
+    from jsonref import JsonLoader
+    import jsonschema
+
+    class TestJSONResolver(JsonLoader):
+
+        def __init__(self, store=(), cache_results=True):
+            return super(TestJSONResolver, self).__init__(store, cache_results)
+
+        def __call__(self, uri, **kwargs):
+            from invenio_jsonschemas import current_jsonschemas
+            from invenio_jsonschemas.errors import JSONSchemaNotFound
+            try:
+                return current_jsonschemas.get_schema(uri)
+            except JSONSchemaNotFound:
+                return super(TestJSONResolver, self).__call__(uri, *kwargs)
+    resolved_schema = jsonref.load(source, loader=TestJSONResolver())
+    jsonschema.Draft4Validator.check_schema(resolved_schema)
+    click.echo(json.dumps(resolved_schema, indent=2))

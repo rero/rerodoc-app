@@ -45,7 +45,7 @@
 -e git+https://github.com/inveniosoftware/invenio-records-rest#egg=invenio-records-rest
 -e git+https://github.com/inveniosoftware/invenio-records-ui#egg=invenio-records-ui
 -e git+https://github.com/inveniosoftware/invenio-rest#egg=invenio-rest
--e git+https://github.com/inveniosoftware/invenio-search#egg=invenio-search[elasticsearch2]
+-e git+https://github.com/inveniosoftware/invenio-search#egg=invenio-search[elasticsearch5]
 -e git+https://github.com/inveniosoftware/invenio-search-ui#egg=invenio-search-ui
 -e git+https://github.com/inveniosoftware/invenio-theme#egg=invenio-theme
 -e git+https://github.com/inveniosoftware/invenio-records-files#egg=invenio-records-files
@@ -55,10 +55,9 @@
 -e git+https://github.com/inveniosoftware/invenio-celery.git#egg=invenio-celery
 -e git+https://github.com/inveniosoftware/invenio-collections.git#egg=invenio-collections
 -e git+https://github.com/inveniosoftware/invenio-files-rest.git#egg=invenio-files-rest
+-e git+https://github.com/inveniosoftware/invenio-oaiharvester.git#egg=invenio-oaiharvester
 
-#ChangeIt
--e git+https://github.com/rero/invenio-oaiharvester#egg=invenio-oaiharverster
+#Local projects
 
--e git+git://github.com/rero/rerodoc-data.git#egg=rerodoc-data
 
 redis

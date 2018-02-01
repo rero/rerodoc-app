@@ -1,0 +1,18 @@
+{
+  "title": "Printer",
+  "type": "object",
+  "required": ["printer"],
+  "additionalProperties": false,
+  "properties": {
+    "location": {
+      "title": "Location of the printer of the publication",
+      "type": "string",
+      "minLength": 3
+    },
+    "printer": {
+      "title": "Printer of the publication",
+      "type": "string",
+      "minLength": 3
+    }
+  }
+}

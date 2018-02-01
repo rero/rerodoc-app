@@ -1,0 +1,31 @@
+{
+    "title": "Identifiers",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-8",
+        "items": [
+            "recid",
+            "rero_id",
+            {
+                "type": "button",
+                "title": "Load data",
+                "condition": "model.rero_id"
+            }
+        ]}, 
+        {
+            "type": "section",
+            "htmlClass": "col-md-4",
+            "items": [{
+                "key": "isbn10",
+                "validationMessage": "Bad ISBN Fromat try something like: 2-88147-009-2",
+                "placeholder": "e.g. 2-88147-009-2"
+            }, {
+                "key": "isbn13",
+                "validationMessage": "Bad ISBN Fromat try something like: 9782882250209",
+                "placeholder": "e.g.: 9782882250209"
+            }]
+        }
+    ]
+}

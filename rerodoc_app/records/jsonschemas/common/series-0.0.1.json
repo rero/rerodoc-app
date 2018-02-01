@@ -1,0 +1,19 @@
+{
+  "title": "Part of series",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "minLength": 3
+    },
+    "volume": {
+      "title": "Volume",
+      "description": "number of the series",
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

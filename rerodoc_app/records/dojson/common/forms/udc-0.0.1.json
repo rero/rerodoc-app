@@ -1,0 +1,26 @@
+{
+    "title": "UDC",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "udc.en",
+                {
+                    "key": "udc.fr"
+                },{
+                    "key": "udc.uri"
+                }
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "udc.it",
+                "udc.de",
+                "udc.code"
+            ]
+        }
+    ]
+}

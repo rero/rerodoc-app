@@ -1,0 +1,21 @@
+{
+    "title": "Reproduction",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "reproduction.type",
+                "reproduction.location"
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "reproduction.agency",
+                "reproduction.date"
+            ]
+        }
+    ]
+}

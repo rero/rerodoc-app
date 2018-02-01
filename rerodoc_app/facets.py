@@ -25,57 +25,89 @@
 """RERO DOC facets configuration."""
 
 
-facet_document_type = dict(
+document_type = dict(
     terms=dict(
-        field="document_type.main",
-        size=0,
-        include='RERO_DOC.NAVDOCTYPE\.[A-Z]+'
+        field="_collections",
+        size=1000,
+        include='type\.[a-z_]+'
+    )
+)
+
+udc = dict(
+    terms=dict(
+        field="_collections",
+        size=1000,
+        include='udc\.[a-z_]+'
     ),
     aggs=dict(
-        book=dict(
+        sciences_exactes_et_naturelles=dict(
             terms=dict(
                 field="_collections",
-                size=0,
-                include='RERO_DOC\.NAVDOCTYPE\.BOOK\.[A-Z]+'
+                size=1000,
+                include='udc\.sciences_exactes_et_naturelles\.[a-z_]+'
+            ),
+            aggs=dict(
+                sciences_de_la_terre=dict(
+                    terms=dict(
+                        field="_collections",
+                        size=1000,
+                        include='udc\.sciences_exactes_et_naturelles\.sciences_de_la_terre\.[a-z_]+'  # nopep8
+                    ),
+                    aggs=dict(
+                        geologie=dict(
+                            terms=dict(
+                                field="_collections",
+                                size=1000,
+                                include='udc\.sciences_exactes_et_naturelles\.sciences_de_la_terre\.geologie\.[a-z_]+'  # nopep8
+                            )
+                        )
+                    )
+                )
             )
         )
     )
 )
 
-
-facet_institutions = dict(
+institution = dict(
     terms=dict(
         field="_collections",
-        size=0,
-        include='RERO_DOC\.NAVSITE\.[A-Z]+'
+        size=1000,
+        include='institution\.[a-z_]+'
     ),
     aggs=dict(
         vaud=dict(
             terms=dict(
                 field="_collections",
-                size=0,
-                include='RERO_DOC\.NAVSITE\.VAUD\.[A-Z]+'
+                size=1000,
+                include='institution\.vaud\.[a-z_]+'
             )
         ),
         geneve=dict(
             terms=dict(
                 field="_collections",
-                size=0,
-                include='RERO_DOC\.NAVSITE\.GENEVE\.[A-Z]+'
+                size=1000,
+                include='institution\.geneve\.[a-z_]+'
             )
         ),
         fribourg=dict(
             terms=dict(
                 field="_collections",
-                size=0,
-                include='RERO_DOC\.NAVSITE\.FRIBOURG\.[A-Z]+'
+                size=1000,
+                include='institution\.fribourg\.[a-z_]+'
             )
         ),
-        neuchatel=dict(
+        neuchatel_jura=dict(
             terms=dict(
                 field="_collections",
-                size=0,
-                include='RERO_DOC\.NAVSITE\.NEUCHATEL\.[A-Z]+'
+                size=1000,
+                include='institution\.neuchatel_jura\.[a-z_]+'
+            )
+        ),
+        tessin=dict(
+            terms=dict(
+                field="_collections",
+                size=1000,
+                include='institution\.tessin\.[a-z_]+'
             )
         ),
     )

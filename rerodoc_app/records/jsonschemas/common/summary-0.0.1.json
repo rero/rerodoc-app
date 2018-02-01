@@ -1,0 +1,22 @@
+{
+  "title": "Summaries",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "title": "Summary",
+    "type": "object",
+    "required": ["language", "value"],
+    "additionalProperties": false,
+    "properties": {
+      "language": {
+        "$ref": "lang-0.0.1.json"
+      },
+      "value": {
+        "title": "Content",
+        "type": "string",
+        "minLength": 20
+      }
+    }
+  }
+}

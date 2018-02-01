@@ -1,0 +1,30 @@
+{
+    "title": "Meeting",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "meeting.name",
+                {
+                    "key": "meeting.location",
+                    "condition": "model.meeting.name"
+                }
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                {
+                    "key": "meeting.date",
+                    "condition": "model.meeting.name"
+                },
+                {
+                    "key": "meeting.number",
+                    "condition": "model.meeting.name"
+                }
+            ]
+        }
+    ]
+}

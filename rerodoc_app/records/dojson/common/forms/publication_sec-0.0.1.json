@@ -1,0 +1,21 @@
+{
+    "title": "Publication",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-12",
+        "items": [
+            {"$ref": "/forms/common/general"},
+            {"$ref": "/forms/common/title"},
+            {"$ref": "/forms/common/other_title"},
+            {"$ref": "/forms/common/authors"},
+            {"$ref": "/forms/common/corporate"},
+            {"$ref": "/forms/common/meeting"},
+            {"$ref": "/forms/common/publication"},
+            {"$ref": "/forms/common/edition"},
+            {"$ref": "/forms/common/series"},
+            {"$ref": "/forms/common/notes"}
+        ]
+    }]
+}

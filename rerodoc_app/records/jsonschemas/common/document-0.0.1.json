@@ -1,0 +1,81 @@
+{
+  "title": "Document",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "title": "Document",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["mime", "size", "name", "url", "label"],
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "minLength": 3
+      },
+      "mime": {
+        "title": "Mime Type",
+        "type": "string",
+        "readOnly": true,
+        "enum": [
+         "application/pdf",
+         "image/jpeg",
+         "audio/mpeg"
+       ]
+      },
+      "size": {
+        "title": "File size in bytes",
+        "type": "integer",
+        "minimum": 1,
+        "readOnly": true
+      },
+      "url": {
+        "title": "URL",
+        "type": "string",
+        "format": "url",
+        "pattern": "^http(s{0,1})://doc.rero.ch/record"
+      },
+      "label": {
+        "title": "Label",
+        "type": "string",
+        "minLength": 3
+      },
+      "number_of_pages": {
+        "title": "Number of pages.",
+        "description": "Number of pages of a text document.",
+        "type": "integer",
+        "minimum": 1
+      },
+      "duration": {
+        "title": "Duration of the document.",
+        "description": "Time duration in seconds.",
+        "type": "integer",
+        "minimum": 1
+      },
+      "physical_description": {
+        "title": "Physical Description.",
+        "description": "Description of the original document.",
+        "type": "object",
+        "required": ["extent"],
+        "properties": {
+          "extent": {
+            "title": "Extend",
+            "description": "Number of physical pages, volumes, etc.",
+            "type": "string"
+          },
+          "details": {
+            "title": "Other physical details",
+            "description": "Physical characteristics such as illustrative matter, coloration, etc.",
+            "type": "string"
+          },
+          "dimensions": {
+            "title": "Dimensions",
+            "description": "Expressed in centimeters, etc.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

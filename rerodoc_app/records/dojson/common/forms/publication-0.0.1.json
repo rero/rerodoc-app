@@ -1,0 +1,22 @@
+{
+    "title": "Publication/Printer",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "publication.publisher",
+                "publication.location",
+                "publication.date"
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "publication.printer",
+                "publication.print_location"
+            ]
+        }
+    ]
+}

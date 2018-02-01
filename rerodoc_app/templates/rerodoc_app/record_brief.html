@@ -1,0 +1,68 @@
+{% macro briefs(record) -%}
+
+    <div class="media">
+    {%- set files = record|get_files_list -%}
+        <div class="media-left">
+                <a href="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].file_name) }}" target="_none"><img class="media-object" src="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].thumb_name) }}" alt="Document"/></a>
+                <div class="caption text-center">{{_(record.type.main | title)}}</div>
+        </div>
+        <div class="media-body">
+
+            {#- title #}
+            <h3 class="media-heading"><a href="/record/{{ record.recid }}">{{ record.title[0].main | striptags }}{% if (record.title[0].sub) -%}&nbsp;: {{ record.title[0].sub|striptags }}{%- endif %}</a></h3>
+
+            {#- contributors #}
+            {%- set separator = '' -%}
+            {%- if record.contributor %}
+            <h4>
+            {%- for contributor in record.contributor -%}
+            {{ separator | safe }}<a href="#">{{ contributor.name }}{%- if (contributor.role) -%}&nbsp; ({{ contributor.role }}){%- endif -%}</a>{%- set separator = "&thinsp;; " %}
+            {%- endfor -%}
+            </h4>
+            {%- endif -%}
+
+            {#- publication - edition #}
+            {% if record.edition or record.publication %}
+            <h4>
+            {% if record.edition and record.edition.name %}
+                {{ record.edition.statement }}.
+            {% endif %}
+
+            {% if record.publication %}
+                {%- if record.publication.location -%}{{ record.publication.location }}{% endif %}
+                {%- if record.publication.publisher -%}&thinsp;: {{ record.publication.publisher }}{% endif %}
+                {%- if record.publication.date_label -%}, {{ record.publication.date_label }}{% endif %}
+            {% endif %}
+            </h4>
+            {% endif %}
+
+            {#- content note -#}
+            {%- for content_note in record.content_note -%}
+            {%- if loop.first %}
+            <h4>{{ content_note | format_human_readable_year_month(lang) }}</h4>
+            {% endif %}
+            {% endfor %}
+
+            {#- TODO: 362__a numerotation #}
+
+            {#- series -#}
+            {%- if record.series %}
+            <h4>{{ record.series.name }}</h4>
+            {% endif %}
+
+            {#- ISBN -#}
+            {% if record.isbn %}
+            <h4>
+                ISBN: {{ record.isbn }}
+            </h4>
+            {% endif %}
+
+            {%- if record.summary %}
+            <p class="list-group-item-text">
+                {{ record.summary[0].content | striptags | truncate_summary(400) }}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+
+{%- endmacro %}

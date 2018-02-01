@@ -1,0 +1,7 @@
+{
+  "title": "RERO URI",
+  "description": "link to the RERO collectif catalog resource",
+  "type": "string",
+  "format": "uri",
+  "pattern": "^http://data.rero.ch/01-.*$"
+}

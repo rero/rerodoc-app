@@ -1,0 +1,31 @@
+ {
+  "title": "title",
+  "description": "as appears on the 1th page of the document",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "title": "Title",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "main",
+      "language"
+    ],
+    "properties": {
+      "language": {
+        "$ref": "lang-0.0.1.json"
+      },
+      "main": {
+        "title": "Main Title",
+        "type": "string",
+        "minLength": 3
+      },
+      "sub": {
+        "title": "Subtitle",
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  }
+}

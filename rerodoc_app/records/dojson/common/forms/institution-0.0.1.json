@@ -1,0 +1,19 @@
+{
+    "title": "Institution",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-8",
+        "items": [
+            "institution.name",
+            "institution.code"
+        ]
+    },{
+        "type": "section",
+        "htmlClass": "col-md-4",
+        "items": [
+            "institution.locality"
+        ]
+    }]
+}

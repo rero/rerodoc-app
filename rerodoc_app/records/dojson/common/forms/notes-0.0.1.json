@@ -1,0 +1,22 @@
+{
+    "title": "Notes",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-12",
+            "items": [
+                "content_note"
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-12",
+            "items": [
+                {
+                    "key": "note",
+                    "type": "textarea"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+	"title": "Specific Collection",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{    	
+    	"key": "specific_collection",
+    	"type": "tabarray",
+    	"add": "New",
+    	"tabType": "top",
+    	"htmlClass": "col-md-12",
+    	"remove": "Delete",
+    	"style": {
+    	 	"remove": "btn-danger"
+    	},
+    	"title": "{{ value.name || 'Tab '+$index }}",
+    	"items": [{
+    		"type": "section",
+    		"htmlClass": "row",
+    		"items": [{
+    			"type": "section",
+    			"htmlClass": "col-md-8",
+    			"items": [
+                    "specific_collection[].name"
+    			]
+    		}, {
+				"type": "section",
+    			"htmlClass": "col-md-4",
+    			"items": [
+                    "specific_collection[].code"
+    			]
+    		}]	
+    	}]
+    }]
+}

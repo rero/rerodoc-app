@@ -1,0 +1,247 @@
+{
+  "settings": {
+    "analysis" : {
+      "analyzer" : {
+        "default" : {
+          "type" : "english"
+        }
+      }
+    }
+  },
+  "mappings" : {
+    "percolators" : {
+      "properties" : {
+        "query" : {
+          "type" : "percolator"
+        }
+      }
+    },
+    "book-v0.0.1" : {
+      "date_detection" : false,
+      "numeric_detection" : false,
+      "properties" : {
+        "$schema" : {
+          "type" : "keyword"
+        },
+        "_collections" : {
+          "type" : "keyword"
+        },
+        "_created" : {
+          "type" : "date"
+        },
+        "_files" : {
+          "type": "nested",
+          "properties" : {
+            "bucket" : {
+              "type" : "keyword"
+            },
+            "checksum" : {
+              "type" : "keyword"
+            },
+            "filetype" : {
+              "type" : "keyword"
+            },
+            "key" : {
+              "type" : "keyword"
+            },
+            "size" : {
+              "type" : "long"
+            },
+            "version_id" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "_oai" : {
+          "type": "nested",
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "sets": {
+              "type": "keyword"
+            },
+            "updated": {
+              "type": "date"
+            }
+          }
+        },
+        "_updated" : {
+          "type" : "date"
+        },
+        "content_note" : {
+          "type" : "text"
+        },
+        "contributor" : {
+          "type": "nested",
+          "properties" : {
+            "name" : {
+              "type" : "text",
+              "copy_to": "facet_contributor"
+            },
+            "role" : {
+              "type" : "keyword"
+            },
+            "type" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "facet_contributor": {
+          "type": "keyword"
+        },
+        "document" : {
+          "type": "nested",
+          "properties" : {
+            "label" : {
+              "type" : "text"
+            },
+            "mime" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "keyword"
+            },
+            "physical_description" : {
+              "type": "nested",
+              "properties" : {
+                "dimensions" : {
+                  "type" : "keyword"
+                },
+                "extent" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "size" : {
+              "type" : "long"
+            },
+            "url" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "fulltext" : {
+          "type" : "text"
+        },
+        "imported_keyword" : {
+          "type": "nested",
+          "properties" : {
+            "language" : {
+              "type" : "keyword"
+            },
+            "value" : {
+              "type" : "text",
+              "copy_to": "facet_keyword"
+            },
+            "vocabulary" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "facet_keyword": {
+          "type": "keyword"
+        },
+        "institution" : {
+          "type" : "keyword"
+        },
+        "language" : {
+          "type" : "keyword"
+        },
+        "note" : {
+          "type" : "text"
+        },
+        "print" : {
+          "type": "nested",
+          "properties" : {
+            "location" : {
+              "type" : "keyword"
+            },
+            "printer" : {
+              "type" : "text"
+            }
+          }
+        },
+        "publication" : {
+          "type": "nested",
+          "properties" : {
+            "date_label" : {
+              "type" : "keyword"
+            },
+            "location" : {
+              "type" : "text"
+            },
+            "publisher" : {
+              "type" : "text"
+            },
+            "start_date" : {
+              "type" : "date"
+            },
+            "end_date" : {
+              "type" : "date"
+            }
+          }
+        },
+        "recid" : {
+          "type" : "keyword"
+        },
+        "reroid" : {
+          "type" : "keyword"
+        },
+        "series" : {
+          "type": "nested",
+          "properties" : {
+            "name" : {
+              "type" : "text"
+            },
+            "volume" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "specific_collection" : {
+          "type" : "keyword"
+        },
+        "summary" : {
+          "type": "nested",
+          "properties" : {
+            "language" : {
+              "type" : "keyword"
+            },
+            "value" : {
+              "type" : "text"
+            }
+          }
+        },
+        "title" : {
+          "type": "nested",
+          "properties" : {
+            "language" : {
+              "type" : "keyword"
+            },
+            "main" : {
+              "type" : "text"
+            },
+            "sub" : {
+              "type" : "text"
+            }
+          }
+        },
+        "type" : {
+          "type": "nested",
+          "properties" : {
+            "main" : {
+              "type" : "keyword"
+            },
+            "sub" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "udc" : {
+          "type" : "keyword"
+        }
+      }
+    }
+  }
+}

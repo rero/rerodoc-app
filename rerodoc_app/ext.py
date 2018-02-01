@@ -28,7 +28,11 @@ from __future__ import absolute_import, print_function
 
 from flask_babelex import gettext as _
 
+from invenio_indexer.signals import before_record_index
+from invenio_oaiharvester.signals import oaiharvest_finished
+
 from . import config
+from .records.receivers import indexer_receiver, publish_harvested_records
 from .views import blueprint
 
 
@@ -43,6 +47,7 @@ class RerodocApp(object):
         _('A translation string')
         if app:
             self.init_app(app)
+        self.register_signals(app)
 
     def init_app(self, app):
         """Flask application initialization."""
@@ -61,3 +66,10 @@ class RerodocApp(object):
         for k in dir(config):
             if k.startswith('RERODOC_APP_'):
                 app.config.setdefault(k, getattr(config, k))
+
+    @staticmethod
+    def register_signals(app):
+        """Register Zenodo Deposit signals."""
+        oaiharvest_finished.connect(publish_harvested_records,
+                                    weak=False)
+        before_record_index.connect(indexer_receiver, weak=False)

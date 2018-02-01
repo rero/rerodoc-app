@@ -1,0 +1,18 @@
+{
+	"title": "Corporate Authors",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{    	
+    	"key": "corporate",
+    	"type": "tabarray",
+    	"add": "New",
+    	"tabType": "top",
+    	"htmlClass": "col-md-12",
+    	"remove": "Delete",
+    	"style": {
+    	 	"remove": "btn-danger"
+    	},
+    	"title": "{{ value || 'Tab '+$index }}",
+    	"items": ["corporate[]"]
+    }]
+}

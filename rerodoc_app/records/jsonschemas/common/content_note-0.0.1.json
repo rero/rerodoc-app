@@ -1,0 +1,11 @@
+{
+  "title": "Content Note",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "title": "Content Note",
+    "type": "string",
+    "minLength": 3
+  }
+}

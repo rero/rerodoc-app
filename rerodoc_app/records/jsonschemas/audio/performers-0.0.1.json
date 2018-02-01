@@ -1,0 +1,5 @@
+{
+    "title": "Performers",
+    "description": "List of performers with a ';' separator. For example: Miles Davis (trumpet); Chick Corea (piano)",
+    "type": "string"
+}

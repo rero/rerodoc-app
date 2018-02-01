@@ -1,0 +1,41 @@
+{
+	"title": "Summary",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{    	
+    	"key": "summary",
+    	"type": "tabarray",
+    	"add": "New",
+    	"tabType": "top",
+    	"htmlClass": "col-md-12",
+    	"remove": "Delete",
+    	"style": {
+    	 	"remove": "btn-danger"
+    	},
+    	"title": "{{ value.lang || 'Tab '+$index }}",
+    	"items": [{
+    		"type": "section",
+    		"htmlClass": "row",
+    		"items": [{
+    			"type": "section",
+    			"htmlClass": "col-md-8",
+    			"items": [
+                    {
+                        "key": "summary[].content",
+                        "type": "textarea"
+                    }
+    			]
+    		}, {
+				"type": "section",
+    			"htmlClass": "col-md-4",
+    			"items": [
+                    {            
+                        "key": "summary[].lang",
+                        "type": "select",
+                        "titleMap": { "$ref": "/forms/common/lang"}
+                    }
+    			]
+    		}]	
+    	}]
+    }]
+}

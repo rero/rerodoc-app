@@ -1,0 +1,27 @@
+{
+  "title": "Keywords in Several Languages",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "title": "keyword",
+    "type": "object",
+    "required": ["language", "value"],
+    "additionalProperties": false,
+    "properties": {
+      "language": {
+        "$ref": "lang-0.0.1.json"
+      },
+      "value": {
+        "type": "array",
+        "uniqueItems": true,
+        "minItems" : 1,
+        "items": {
+          "title": "One keyword",
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    }
+  }
+}

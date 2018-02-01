@@ -34,6 +34,57 @@ from flask import Flask
 from flask_babelex import Babel
 
 
+def pytest_addoption(parser):
+    """To Do."""
+    parser.addoption("--runslow", action="store_true",
+                     help="Run also slow tests")
+
+
+@pytest.fixture()
+def contributor():
+    """Full contributor example."""
+    return {
+        'contributor': [{
+            'name': '<lastname1>, <fistname1>',
+            'birth_date': '1971',
+            'affiliation': '<affiliation1>',
+            'type': 'person',
+            'role': 'author',
+            'orcid': 'http://orcid.org/0000-0001-8368-5460'
+        }, {
+            'name': '<lastname2>, <fistname2>',
+            'birth_date': '1941',
+            'death_date': '1978',
+            'role': 'thesis director',
+            'affiliation': '<affiliation2>',
+            'type': 'person'
+        }, {
+            'name': '<lastname3>, <fistname3>',
+            'birth_date': '1974-01-01',
+            'affiliation': '<affiliation3>',
+            'role': 'thesis codirector',
+            'type': 'person'
+        }, {
+            'name': '<lastname4>, <fistname4>',
+            'birth_date': '1974',
+            'role': 'editor',
+            'type': 'person'
+        }, {
+            'name': '<name1>',
+            'type': 'corporate',
+            'role': 'author'
+        }, {
+            'name': '<name2>',
+            'type': 'corporate',
+            'role': 'author'
+        }, {
+            'name': '<name3>',
+            'type': 'corporate',
+            'role': 'printer'
+        }]
+    }
+
+
 @pytest.yield_fixture()
 def instance_path():
     """Temporary instance path."""

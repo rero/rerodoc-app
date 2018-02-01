@@ -1,0 +1,24 @@
+{
+  "title": "Language",
+  "type": "string",
+  "default": "fr",
+  "enum": [
+    "fr",
+    "de",
+    "en",
+    "it",
+    "sq",
+    "hr",
+    "nl",
+    "hu",
+    "la",
+    "pl",
+    "pt",
+    "rm",
+    "ro",
+    "rn",
+    "es",
+    "sr",
+    "sw"
+  ]
+}

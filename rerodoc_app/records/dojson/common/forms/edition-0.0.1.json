@@ -1,0 +1,22 @@
+{
+    "title": "Edition",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                "edition.name"
+            ]
+        }, {
+            "type": "section",
+            "htmlClass": "col-md-6",
+            "items": [
+                {
+                    "key": "edition.remainder",
+                    "condition": "model.edition.name"
+                }
+            ]
+        }
+    ]
+}

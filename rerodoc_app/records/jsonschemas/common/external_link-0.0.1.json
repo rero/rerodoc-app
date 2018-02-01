@@ -1,0 +1,26 @@
+{
+  "title": "External Link",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems": 1,
+  "items": {
+    "title": "Extenal Link",
+    "type": "object",
+    "required": ["url"],
+    "additionalProperties": false,
+    "properties": {
+      "url": {
+        "title": "URL",
+        "type": "string",
+        "format": "uri",
+        "minLength": 10,
+        "pattern": "^http(s{0,1})://"
+      },
+      "label": {
+        "title": "Label",
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  }
+}

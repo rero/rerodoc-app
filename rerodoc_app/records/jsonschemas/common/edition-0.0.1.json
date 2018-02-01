@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "title": "Edition",
+  "additionalProperties": false,
+  "required": ["statement"],
+  "properties": {
+    "statement": {
+      "title": "Edition name",
+      "type": "string",
+      "minLength": 3
+    },
+    "remainder": {
+      "title": "Remainder of the edition",
+      "type": "string",
+      "minLength": 3
+    }
+  }
+}

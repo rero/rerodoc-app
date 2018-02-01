@@ -15,51 +15,62 @@ invenio index delete --force --yes-i-know marc21-authority-ad-v1.0.0 || true
 invenio index delete --force --yes-i-know marc21-holdings-hd-v1.0.0 || true
 
 invenio index queue init
+invenio utils alias records iheid
 
-# create new user
-invenio users create -a admin@rero.ch --password administrator
-invenio users create -a librarian@rero.ch --password librarian
+echo "Creating accounts..."
+# # create new user
+# invenio users create -a admin@rero.ch --password administrator
+# invenio users create -a librarian@rero.ch --password librarian
 
-# create roles
-invenio roles create -d "Admins Group" admins
-invenio roles create -d "Super Users Group" superusers
-invenio roles create -d "Cataloguer" cataloguer
+# # create roles
+# invenio roles create -d "Admins Group" admins
+# invenio roles create -d "Super Users Group" superusers
+# invenio roles create -d "Cataloguer" cataloguer
 
-# grant accesses to action roles
-invenio access allow admin-access role admins
-invenio access allow superuser-access role superusers
+# # grant accesses to action roles
+# invenio access allow admin-access role admins
+# invenio access allow superuser-access role superusers
 
-# grant roles to users
-invenio roles add admin@rero.ch admins
-invenio roles add admin@rero.ch superusers
-invenio roles add librarian@rero.ch cataloguer
+# # grant roles to users
+# invenio roles add admin@rero.ch admins
+# invenio roles add admin@rero.ch superusers
+# invenio roles add librarian@rero.ch cataloguer
 
-invenio collections create RERO_DOC
-invenio collections create -p RERO_DOC RERO_DOC.NAVDOCTYPE
-invenio collections create -p RERO_DOC.NAVDOCTYPE -q "document_type.main:book" RERO_DOC.NAVDOCTYPE.BOOK
-invenio collections create -p RERO_DOC RERO_DOC.NAVSITE
-invenio collections create -p RERO_DOC.NAVSITE RERO_DOC.NAVSITE.FRIBOURG
-invenio collections create -p RERO_DOC.NAVSITE RERO_DOC.NAVSITE.VALAIS
-invenio collections create -p RERO_DOC.NAVSITE RERO_DOC.NAVSITE.VAUD
-invenio collections create -p RERO_DOC.NAVSITE RERO_DOC.NAVSITE.GENEVE
-invenio collections create -p RERO_DOC.NAVSITE RERO_DOC.NAVSITE.NEUCHATEL
-invenio collections create -p RERO_DOC.NAVSITE.VAUD -q "institution.code:CIO" RERO_DOC.NAVSITE.VAUD.CIO
-invenio collections create -p RERO_DOC.NAVSITE.GENEVE -q "institution.code:BAAGE" RERO_DOC.NAVSITE.GENEVE.BAAGE
-invenio collections create -p RERO_DOC.NAVSITE.VALAIS -q "institution.code:MEDVS" RERO_DOC.NAVSITE.VALAIS.MEDVS
-invenio collections create -p RERO_DOC.NAVSITE.GENEVE -q "institution.code:BPUGE" RERO_DOC.NAVSITE.GENEVE.BPUGE
-invenio collections create -p RERO_DOC.NAVSITE.GENEVE -q "institution.code:IHEID" RERO_DOC.NAVSITE.GENEVE.IHEID
-invenio collections create -p RERO_DOC.NAVSITE.FRIBOURG -q "institution.code:BUCFR" RERO_DOC.NAVSITE.FRIBOURG.BUCFR
-invenio collections create -p RERO_DOC.NAVSITE.NEUCHATEL -q "institution.code:BICJ" RERO_DOC.NAVSITE.NEUCHATEL.BICJ
-invenio collections create -p RERO_DOC.NAVSITE.NEUCHATEL -q "institution.code:BPUNE" RERO_DOC.NAVSITE.NEUCHATEL.BPUNE
-invenio collections create -p RERO_DOC.NAVSITE.GENEVE -q "institution.code:IMVGE" RERO_DOC.NAVSITE.GENEVE.IMVGE
-invenio collections create -p RERO_DOC.NAVSITE.VAUD -q "institution.code:SAEF" RERO_DOC.NAVSITE.VAU${INVENIO_WEB_INSTANCE}
-invenio collections create  -p RERO_DOC RERO_DOC.NAVDOM
-invenio collections create  -p RERO_DOC.NAVDOM RERO_DOC.NAVDOM.LETTRES_SCIENCES_HUMAINES_ET_SOCIALES
-invenio collections create -q "udc.code:796"  -p RERO_DOC.NAVDOM.LETTRES_SCIENCES_HUMAINES_ET_SOCIALES NAVDOM.LETTRES_SCIENCES_HUMAINES_ET_SOCIALES.SCIENCES_DU${INVENIO_WEB_INSTANCE}
-invenio collections create -p RERO_DOC RERO_DOC.NAVCOLLSPEC
-invenio collections create -p RERO_DOC.NAVCOLLSPEC RERO_DOC.NAVCOLLSPEC.VAUD
-invenio collections create -q 'specific_collection.code:"SDC Deposit Library*"' -p RERO_DOC.NAVCOLLSPEC.VAUD RERO_DOC.NAVCOLLSPEC.VAUD.SDC_DEPOSIT_LIBRARY
+invenio collections create rerodoc
+
+echo "Creating document type collections..."
+invenio collections create -p rerodoc type
+invenio collections create -p type -q "type.main:book" type.book
+
+echo "Creating institution collections..."
+invenio collections create -p rerodoc institution
+invenio collections create -p institution institution.fribourg
+invenio collections create -p institution.fribourg -q "institution:bcufr" institution.fribourg.bucfr
+invenio collections create -p institution institution.valais
+invenio collections create -p institution.valais -q "institution:medvs" institution.valais.medvs
+invenio collections create -p institution institution.neuchatel_jura
+invenio collections create -p institution.neuchatel_jura -q "institution:bicj" institution.neuchatel_jura.bicj
+invenio collections create -p institution.neuchatel_jura -q "institution:pbune" institution.neuchatel_jura.bpune
+invenio collections create -p institution institution.geneve
+invenio collections create -p institution.geneve -q "institution:baage" institution.geneve.baage
+invenio collections create -p institution.geneve -q "institution:bpuge" institution.geneve.bpuge
+invenio collections create -p institution.geneve -q "institution:iheid" institution.geneve.iheid
+invenio collections create -p institution.geneve -q "institution:imvge" institution.geneve.imvge
+
+echo "creating udc collections..."
+invenio collections create -p rerodoc udc
+invenio collections create -p udc udc.sciences_exactes_et_naturelles
+invenio collections create -p udc.sciences_exactes_et_naturelles udc.sciences_exactes_et_naturelles.sciences_de_la_terre
+invenio collections create -p udc.sciences_exactes_et_naturelles.sciences_de_la_terre udc.sciences_exactes_et_naturelles.sciences_de_la_terre.geologie
+invenio collections create -q "udc:56" -p udc.sciences_exactes_et_naturelles.sciences_de_la_terre.geologie udc.sciences_exactes_et_naturelles.sciences_de_la_terre.geologie.paleontologie
+
+echo "Creating specific collections..."
+invenio collections create -p rerodoc specific_collection
+invenio collections create -p specific_collection specific_collection.geneve
+invenio collections create -q 'specific_collection:"BAA - Bibliographie Hodler"' -p specific_collection.geneve specific_collection.geneve.bibliographie_holder
 
 # harvest articles and books on the production server
 #invenio oaiharvester harvest --signals -u http://doc.rero.ch/oai2d -s "book" -d oia -m marcxml -k -e 'utf-8'
-dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -vv -m 100
+echo "Load data..."
+invenio utils load data/full_book.json
+dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -vv -m 500

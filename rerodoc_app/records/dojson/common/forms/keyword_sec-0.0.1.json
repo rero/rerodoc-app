@@ -1,0 +1,11 @@
+{
+    "title": "Keyword",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-12",
+        "items": [
+            {"$ref": "/forms/common/keyword"}        ]
+    }]
+}

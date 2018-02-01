@@ -1,0 +1,12 @@
+{
+    "title": "Specific Collection",
+    "readOnly": true,
+    "type": "array",
+    "uniqueItems": true,
+    "minItems" : 1,
+    "items": {
+      "title": "Name",
+      "type": "string",
+      "minLength": 3
+    }
+}

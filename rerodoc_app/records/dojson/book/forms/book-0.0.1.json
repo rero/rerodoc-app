@@ -1,0 +1,25 @@
+[
+    {
+        "type": "template",
+        "template": "<h1>Create Book for {{model.recid}}</h1>"
+    },
+    {"$ref": "/forms/common/identifiers"},
+    {"$ref": "/forms/common/publication_sec"},
+    {"$ref": "/forms/common/reproduction_sec"},
+    {"$ref": "/forms/common/link_sec"},
+    {"$ref": "/forms/common/institution_sec"},
+    {
+        "type": "autocomplete",
+        "title": "UDC code",
+        "key": "udc.code",
+        "placeholder": "Type to search or space for all",
+        "description": "Autompletion is enabled"
+    },
+    {"$ref": "/forms/common/summary_sec"},
+    {"$ref": "/forms/common/keyword_sec"},
+    {"$ref": "/forms/common/document_sec"},
+   {
+      "type": "submit",
+      "title": "Save"
+    }
+]

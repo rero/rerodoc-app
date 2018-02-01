@@ -1,0 +1,8 @@
+{%- extends "invenio_theme/page.html" %}
+
+{%- block css %}
+    {{ super() }}
+    {%- assets "rerodoc_css" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {%- endassets %}
+{%- endblock css %}

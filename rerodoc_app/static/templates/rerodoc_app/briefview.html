@@ -1,0 +1,10 @@
+<ul>
+  <li ng-repeat="record in vm.invenioSearchResults.hits.hits track by $index">
+    <h5><a target="_self" ng-href="/record/{{record.id}}" class="">{{ record.metadata.title[0].main }}</a></h5>
+    <p>{{ record.metadata.summary[0].value }}</p>
+    <ul class="highlight">
+    <li ng-repeat="highlight in record.highlight.fulltext" ng-bind-html="highlight"></li>
+    </ul>
+    <hr/>
+  </li>
+</ul>

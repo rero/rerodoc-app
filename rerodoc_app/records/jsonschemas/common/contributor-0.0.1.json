@@ -1,0 +1,67 @@
+{
+  "title": "Authors",
+  "description": "List with all the authors",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "title": "Contributor",
+    "type": "object",
+    "required": ["name", "type", "role"],
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "title": "Author name",
+        "description": "contributor's name as it appears in the paper",
+        "type": "string",
+        "minLength": 3,
+        "format": ".+, .+"
+      },
+      "death_date": {
+        "title": "Birth date of the contributor",
+        "type": "string",
+        "format": "date-time"
+      },
+      "birth_date": {
+        "title": "Death date of the contributor",
+        "type": "string",
+        "format": "date-time"
+      },
+      "affiliation": {
+        "title": "Affiliation",
+        "description": "Affiliation of the contributor",
+        "type": "string",
+        "minLength": 3
+      },
+      "orcid": {
+        "title": "ORCID ID",
+        "description": "ORCID Id when available",
+        "type": "string",
+        "pattern": "^http://orcid.org/\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
+        "format": "uri"
+      },
+      "role": {
+        "title": "Role of the person",
+        "description": "Role of the contributor within the paper.",
+        "type": "string",
+        "default": "author",
+        "enum": [
+          "author",
+          "editor",
+          "printer",
+          "thesis codirector",
+          "thesis director"
+        ]
+      },
+      "type": {
+        "title": "Contributor type.",
+        "type": "string",
+        "default": "person",
+        "enum": [
+          "person",
+          "corporate"
+        ]
+      }
+    }
+  }
+}

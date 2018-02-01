@@ -1,0 +1,14 @@
+{
+    "title": "Documents",
+    "type": "fieldset",
+    "htmlClass": "row",
+    "items": [{
+        "type": "section",
+        "htmlClass": "col-md-12",
+        "items": [{
+   			"type": "template",
+   			"templateUrl": "/static/js/templates/upload.html"
+   			}, 
+     		{"$ref": "/forms/common/document"}        ]
+    }]
+}

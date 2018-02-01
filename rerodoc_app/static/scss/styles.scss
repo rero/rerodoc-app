@@ -22,3 +22,15 @@ invenio-search-facets {
 invenio-search-results li {
     list-style: none;
 }
+
+.rero-detailed-view {
+    .rero-metadata {
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+    }
+}

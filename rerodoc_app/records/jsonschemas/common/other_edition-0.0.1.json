@@ -1,0 +1,26 @@
+{
+  "title": "Other Edition",
+  "type": "array",
+  "uniqueItems": true,
+  "minItems" : 1,
+  "items": {
+    "type": "object",
+    "required": ["url", "type"],
+    "additionalProperties": false,
+    "properties": {
+      "type": {
+        "title": "Type",
+        "type": "string",
+        "default": "published version",
+        "enum": ["published version"]
+      },
+      "url": {
+        "title": "Link",
+        "type": "string",
+        "format": "uri",
+        "pattern": "^http(s{0,1})://",
+        "minLength": 10
+      }
+    }
+  }
+}
