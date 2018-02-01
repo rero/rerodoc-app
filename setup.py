@@ -96,7 +96,8 @@ install_requires = [
     'Markdown>=2.6.10',
     'rdflib>=4.2.2',
     'rdflib-jsonld>=0.4.0',
-    'Wand>=0.4.4'
+    'Wand>=0.4.4',
+    'isbnlib>=3.8.3'
 ]
 
 packages = find_packages()

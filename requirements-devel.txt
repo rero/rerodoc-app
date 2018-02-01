@@ -53,11 +53,12 @@
 -e git+https://github.com/inveniosoftware/invenio-accounts.git#egg=invenio-accounts
 -e git+https://github.com/inveniosoftware/invenio-admin.git#egg=invenio-admin
 -e git+https://github.com/inveniosoftware/invenio-celery.git#egg=invenio-celery
--e git+https://github.com/inveniosoftware/invenio-collections.git#egg=invenio-collections
+#-e git+https://github.com/inveniosoftware/invenio-collections.git#egg=invenio-collections
 -e git+https://github.com/inveniosoftware/invenio-files-rest.git#egg=invenio-files-rest
 -e git+https://github.com/inveniosoftware/invenio-oaiharvester.git#egg=invenio-oaiharvester
 
 #Local projects
+#-e git+https://github.com/rero/invenio-collections.git#egg=invenio-collections
 
 
 redis
