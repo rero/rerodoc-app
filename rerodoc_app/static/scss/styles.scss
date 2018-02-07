@@ -1,36 +1,38 @@
 $icon-font-path: "/static/node_modules/bootstrap-sass/assets/fonts/";
 $fa-font-path: "/static/node_modules/font-awesome/fonts";
 
+@import "./variables.scss";
 @import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
 @import "../node_modules/font-awesome/scss/font-awesome";
 
-.highlight {
-  em {
-    color: $brand-primary;
-  }
-}
+@import "./search.scss";
+@import "./detailed-view.scss";
 
-invenio-search-facets {
-    ul {
-        margin: 0;
-    }
-    input[type="checkbox"] {
-        margin-right: 6px;
+header {
+    background: url('/static/img/header-bg.jpg') no-repeat scroll center top #FFFFFF;
+    height: 170px;
+    margin-bottom: 20px;
+    nav.navbar {
+        background: transparent;
+        border: none;
     }
 }
 
-invenio-search-results li {
-    list-style: none;
+.rero-brief-view {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $gray-lighter;
+    .caption {
+        color: $gray-light;
+    }
 }
-
-.rero-detailed-view {
-    .rero-metadata {
-        ul {
-            margin: 0;
-            padding: 0;
-        }
-        li {
-            list-style: none;
-        }
+.rero-brand {
+    form {
+        margin-top: 17px;
+    }
+    img {
+        height: 93px;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }

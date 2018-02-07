@@ -1,0 +1,13 @@
+{% macro add_hidden_inputs(args, exclude=['page', 'size', 'p']) -%}
+  {% for key, value in args.items() %}
+    {% if key not in exclude %}
+      {% if value is not string and value is iterable %}
+        {% for val in args[key] %}
+          <input type="hidden" name="{{key}}" value="{{val}}" />
+        {% endfor %}
+      {% else %}
+        <input type="hidden" name="{{key}}" value="{{value}}" />
+      {% endif%}
+    {% endif %}
+  {% endfor %}
+{%- endmacro %}

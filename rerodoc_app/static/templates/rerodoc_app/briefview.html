@@ -1,10 +1,37 @@
-<ul>
+<ul class="rero-search-brief">
   <li ng-repeat="record in vm.invenioSearchResults.hits.hits track by $index">
-    <h5><a target="_self" ng-href="/record/{{record.id}}" class="">{{ record.metadata.title[0].main }}</a></h5>
-    <p>{{ record.metadata.summary[0].value }}</p>
+    <h2><a target="_self" ng-href="/record/{{record.id}}" class="">
+        {{ record.metadata.title[0].main }}
+        <span ng-show="record.metadata.title[0].sub">: {{record.metadata.title[0].sub}}</span>
+      </a>
+    </h2>
+    <p>
+      <ul ng-show="record.metadata.contributor" class="rero-contributor">
+      <li ng-repeat="contributor in record.metadata.contributor| roles: ['author', 'editor', 'thesis director', 'thesis codirector']">
+        {{contributor.name}}
+      </li>
+    </ul>
+  </p>
+    <p ng-show="record.metadata.edition">
+      {{record.metadata.edition.statement}}
+      <span hg-show="record.metadata.edition.remainder">
+        / {{record.metadata.edition.remainder}}
+      </span>
+    </p>
+    <p ng-show="record.metadata.publication">
+      <span hg-show="record.metadata.publication.location">
+        {{record.metadata.publication.location}} /
+      </span>
+      {{record.metadata.publication.publisher}}
+      <span hg-show="record.metadata.publication.date_label">, {{record.metadata.publication.date_label}}
+    </p>
+    <p ng-show="record.metadata.summary | summary"><strong>Summary: </strong>{{ record.metadata.summary | summary }}</p>
+    <p ng-show="record.highlight.fulltext">
+      <strong>Fulltext:</strong>
     <ul class="highlight">
     <li ng-repeat="highlight in record.highlight.fulltext" ng-bind-html="highlight"></li>
     </ul>
+    </p>
     <hr/>
   </li>
 </ul>

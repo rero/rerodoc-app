@@ -76,13 +76,9 @@
 <div class="container rero-detailed-view">
 
   {%- block record_body %}
-  <div class="row rero-brief-view ">
-  <div class="col-md-12">
     {% if record %}
     {{ record_brief.briefs(record) }}
     {% endif %}
-  </div>
-  </div>
   {%- endblock %}
 
   <div class="row">
@@ -114,7 +110,9 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+    {% if record.summary %}
     <li role="presentation"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+    {% endif %}
   </ul>
 
   <!-- Tab panes -->
@@ -140,11 +138,11 @@
     <div role="tabpanel" class="tab-pane" id="summary">
     <p>
     <dl>
-      {% for summ in record.summary %}
-      <dt>{{ summ.lang | translate_language(current_i18n.locale.language) }}</dt>
+      {% for summary in record.summary %}
+      <dt>{{ summary.language | translate_language(current_i18n.locale.language) }}</dt>
       <dd>
       <p>
-        {{ summ.content }}
+        {{ summary.value }}
       </p>
       </dd>
       {% endfor %}

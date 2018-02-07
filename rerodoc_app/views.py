@@ -70,7 +70,7 @@ def index():
 def search():
     """Search page ui."""
     filters = {
-        'geneve': 'RERO_DOC.NAVSITE.GENEVE.IHEID'
+        'geneve': 'institution.geneve.iheid'
     }
     return render_template(current_app.config['SEARCH_UI_SEARCH_TEMPLATE'],
                            search_hidden_params=filters,

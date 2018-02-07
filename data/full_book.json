@@ -1,6 +1,6 @@
 {
         "$schema": "http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json",
-        "recid": "1",
+        "recid": "0",
         "isbn": "9782882250209",
         "reroid": "http://data.rero.ch/01-R1234",
         "title": [{

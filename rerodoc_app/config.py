@@ -42,7 +42,7 @@ def _(x):
     return x
 
 # Default language and timezone
-BABEL_DEFAULT_LANGUAGE = 'fr'
+BABEL_DEFAULT_LANGUAGE = 'en'
 BABEL_DEFAULT_TIMEZONE = 'Europe/Zurich'
 I18N_LANGUAGES = [
     ('fr', _('French')),
@@ -50,10 +50,13 @@ I18N_LANGUAGES = [
     ('it', _('Italian'))
 ]
 
-HEADER_TEMPLATE = 'invenio_theme/header.html'
+HEADER_TEMPLATE = 'rerodoc_app/header.html'
+THEME_HEADER_TEMPLATE = HEADER_TEMPLATE
+THEME_FOOTER_TEMPLATE = 'rerodoc_app/footer.html'
 BASE_TEMPLATE = 'rerodoc_app/page.html'
 COVER_TEMPLATE = 'invenio_theme/page_cover.html'
 SETTINGS_TEMPLATE = 'invenio_theme/page_settings.html'
+THEME_HEADER_LOGIN_TEMPLATE='rerodoc_app/header_login.html'
 THEME_LOGO = "img/logo-rero-doc_en.png"
 
 SECRET_KEY = 'default_key'
@@ -64,7 +67,8 @@ THEME_SITENAME = _('rerodoc-app')
 RERODOC_APP_BASE_TEMPLATE = BASE_TEMPLATE
 """Default base template."""
 SEARCH_UI_SEARCH_TEMPLATE = "rerodoc_app/search_ui.html"
-
+# SEARCH_UI_HEADER_TEMPLATE = "rerodoc_app/search_header.html"
+SEARCH_UI_JSTEMPLATE_COUNT = 'templates/rerodoc_app/count.html'
 SEARCH_UI_JSTEMPLATE_FACETS = 'templates/rerodoc_app/facets.html'
 SEARCH_UI_JSTEMPLATE_RANGE = \
     'node_modules/invenio-search-js/dist/templates/range.html'
@@ -217,18 +221,19 @@ RECORDS_REST_FACETS = dict(
             language=dict(
                 terms=dict(field="language"),
             ),
-            authors=dict(
+            contributor=dict(
                 terms=dict(field="facet_contributor"),
 
             ),
-            keywords=dict(
+            keyword=dict(
                 terms=dict(field="facet_keyword"),
             )
         ),
         filters=dict(
             language=terms_filter('language'),
-            authors=terms_filter('facet_contributor'),
-            keywords=terms_filter('facet_keyword')
+            contributor=terms_filter('facet_contributor'),
+            keyword=terms_filter('facet_keyword'),
+            geneve=terms_filter('_collections')
         )
     )
 )

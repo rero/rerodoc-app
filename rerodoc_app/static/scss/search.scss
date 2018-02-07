@@ -1,0 +1,42 @@
+.highlight {
+  em {
+    color: $brand-primary;
+  }
+  li {
+    font-size: 12px;
+  }
+}
+
+invenio-search-facets {
+    ul {
+        margin: 0;
+    }
+    input[type="checkbox"] {
+        margin-right: 6px;
+    }
+}
+
+invenio-search-results li {
+    list-style: none;
+}
+
+.rero-search-brief {
+    h2 {
+        font-size: 15px;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    ul.rero-contributor {
+        li {
+            list-style: none;
+            display: inline-block;
+        }
+        li:not(:last-child):after {
+            content: ";";
+            margin-right: 4px;
+        }
+
+    }
+}

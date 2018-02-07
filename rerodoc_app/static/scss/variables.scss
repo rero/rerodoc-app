@@ -1,0 +1,184 @@
+// $btn-font-weight: 300;
+
+// @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
+// $color1-gradient: #2BBCFF; //lighten(@color1, 15%);
+$color1: #0047A8;
+// $color2: #0067c9;
+// $color3: #7A9A95;
+// $color4: #EF6D3B;
+// $color5: #FA8B60;
+
+// $cover-panel-padding: 40px;
+
+// $font-family-sans-serif:  Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-weight: 300;
+
+// $headings-font-weight: $font-weight;
+// $headings45-font-weight: 400;
+
+// $navbar-brand-padding-vertical: 20px;
+// $navbar-default-bg: $color1;
+// $navbar-default-brand-color: #fff;
+// $navbar-default-link-color: lighten($color1, 60%);
+// $navbar-default-link-active-color: #fff;
+// $navbar-default-link-active-bg: transparentize(#fff, 0.9);
+// $navbar-default-link-hover-color: #fff;
+// $navbar-default-link-hover-bg: transparentize(#fff, 0.8);
+// $navbar-height: 96px;
+
+// $text-white: #fff;
+
+// $brand-font-family: $font-family-sans-serif;
+// $brand-font-size: 40px;
+// $brand-font-weight: 400;
+// $brand-primary: #428bca;// lighten($color2, 4%);
+// $brand-info: lighten($brand-primary, 10%);
+
+//boutton, a:hover, "objects" 1th page
+$rero-old-orange: #f68211;
+
+//lien, titre record vue breve et detaillee, entrees facettes, fleches pager, onglet pour ouvrir menu, onglets facettes, separateur des submenus dans le header
+$rero-old-blue: #508EC6;
+
+//titres 1ere page, titre carousel, description vue breve et detaillee, titre facette, resultats pager, page courante ds pager, background  submenu dans le header, titres aide, titre desc. collection
+//probablement aussi nombre de resultats dans le pager (1D496C == Erreur)
+//#1d496c recherche avancee + chevron, erreur?
+//#1d496c menu pager et #1d496D sous-menu
+//#1d496c texte pager, erreur?
+
+$rero-old-drak-blue: #1D496D;
+
+$rero-old-drak-blue2: #1d496c;
+
+//sep menu
+$rero-old-drak-blue2: #508ec6;
+
+//nouvelle version d'invenion dans "votre compte"
+//champs obligatoires dans les form (par ex: "votre compte"/nouvelle adresse email.
+$rero-old-red: #F00;
+
+//background carousel left, background description de collection
+$rero-old-durty-blue: #D6E1E8;
+
+//background carousel right
+$rero-old-durty-light-blue: #e8eff4;
+
+//description col. carousel, desc. col.
+$rero-old-gray: #666;
+
+//text footer,
+$rero-old-light-gray: #c4c4c4;
+
+//summary, label vignette, texte table details, texte aide
+$rero-old-sm-gray: #7b7b7b;
+
+//erreur: sep aide vert!
+$rero-old-sep-help: #cdc;
+
+//titre onglet details, background titre onglet non actif
+$rero-old-tab-title-gray: #bebebe;
+
+//bords vignette, separateur facette
+$rero-old-gray-border: #ccc;
+
+//background menu sort
+$rero-old-menu-gray: #eaeaea;
+
+//background facette
+$rero-old-facet-gray: #f1f1f1;
+
+//bords facette
+$rero-old-facet-border-gray: #cdcdcd;
+
+//background "Affiner resultats" facette,
+$rero-old-facet-refine-gray: #f9f9f9;
+
+//border "Affiner resultats" facette,
+$rero-old-facet-refine-border-gray: #D9D9D9;
+
+//titre options dans vue detaillees, sep titre options dans vue detaillee
+$rero-old-title-options-detailed: #BCBCBC;
+
+//texte header, onglet tab details non actif, cadre vignette col., cardre vignette carousel
+$rero-old-white: #fff;
+
+//menu recherche avancee
+$rero-old-black: #000;
+
+//----------- END ------------
+//Explore
+$rero-explore-blue: #5595CF;
+$rero-explore-blue1: #5595D0;
+$rero-explore-blue2: #265C88;;
+
+$rero-white: #FFF;
+$rero-black: #000;
+$rero-orange: #f68211;
+$rero-blue: #508EC6;
+$rero-dark-blue: #1D496D;
+
+//Carousel
+$rero-light-blue: #D6E1E8;
+$rero-lighter-blue: #E8EFF4;
+
+$rero-gray-darker: #222;
+$rero-gray-dark:  #333;
+$rero-gray: #555;
+$rero-gray-light: #777;
+$rero-gray-lighter: #ddd;
+
+//$rero-brand-primary:         #428bca;
+$rero-brand-primary: $rero-orange;
+$rero-brand-success:         #5cb85c;
+$rero-brand-info:            #5bc0de;
+$rero-brand-warning:         #f0ad4e;
+$rero-brand-danger:          #d9534f;
+
+// Theme default
+//@gray: #7B7B7B;
+//@gray-2: #BCBCBC;
+//@gray-background: #F0F0F0;
+//@gray-dark-background: #BEBEBE;
+
+
+$gray-darker: $rero-gray-darker;
+$gray-dark: $rero-gray-dark;
+$gray: $rero-gray;
+$gray-light: $rero-gray-light;
+$gray-lighter: $rero-gray-lighter;
+
+$brand-primary:$rero-brand-primary;
+$brand-success:$rero-brand-success;
+$brand-info:   $rero-brand-info;
+$brand-warning:$rero-brand-warning;
+$brand-danger: $rero-brand-danger;
+
+
+$font-family-sans-serif: "$font-family-sans-serif: Arial, Helvetica Neue", Helvetica, sans-serif;
+$font-size-base: 14px;
+
+$text-white: $rero-white;
+$text-color: $rero-gray;
+$link-hover-color: $rero-orange;
+$link-color: $rero-blue;
+$headings-color: $rero-dark-blue;
+
+$navbar-height: 60px;
+$navbar-inverse-color: $rero-white;
+
+$navbar-inverse-color: $rero-white;
+$navbar-inverse-bg: transparent;
+$navbar-inverse-border: 0xp;
+
+// Inverted navbar links
+$navbar-inverse-link-color:                 $rero-white;
+$navbar-inverse-link-hover-color:           $rero-white;
+$navbar-inverse-link-hover-bg:              transparent;
+$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color;
+$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%);
+$navbar-inverse-link-disabled-color:        #444;
+$navbar-inverse-link-disabled-bg:           transparent;
+$nav-link-hover-bg: transparent;
+$grid-gutter-width: 40px;
+$container-large-desktop: (960px + $grid-gutter-width);
+$container-lg: $container-large-desktop;
