@@ -27,7 +27,6 @@
 from functools import partial
 
 from elasticsearch_dsl.query import Q
-
 from invenio_records_rest.query import default_search_factory
 
 

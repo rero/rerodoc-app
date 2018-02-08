@@ -27,9 +27,25 @@
 import os
 
 from setuptools import find_packages, setup
+from setuptools.command.egg_info import egg_info
 
 readme = open('README.rst').read()
 history = open('CHANGES.rst').read()
+
+class EggInfoWithCompileCatalog(egg_info):
+    def run(self):
+        from babel.messages.frontend import compile_catalog
+        print('Compiling language catalog...')
+        compiler = compile_catalog()
+        option_dict = self.distribution.get_option_dict('compile_catalog')
+        if option_dict.get('domain'):
+            compiler.domain = [option_dict['domain'][1]]
+        else:
+            compiler.domain = ['messages']
+        compiler.use_fuzzy = True
+        compiler.directory = option_dict['directory'][1]
+        compiler.run()
+        super().run()
 
 tests_require = [
     'check-manifest>=0.25',
@@ -39,14 +55,14 @@ tests_require = [
     'pytest-cache>=1.0',
     'pytest-cov>=1.8.0',
     'pytest-pep8>=1.0.6',
-    'pytest>=2.8.0',
+    'pytest>=2.8.0'
 ]
 
 extras_require = {
     'docs': [
         'Sphinx>=1.5.1',
     ],
-    'tests': tests_require,
+    'tests': tests_require
 }
 
 extras_require['all'] = []
@@ -56,6 +72,7 @@ for reqs in extras_require.values():
 setup_requires = [
     'Babel>=1.3',
     'pytest-runner>=2.6.2',
+    'angular-gettext-babel>=0.3'
 ]
 
 install_requires = [
@@ -123,6 +140,9 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
+    cmdclass={
+        'egg_info': EggInfoWithCompileCatalog
+    },
     entry_points={
         'flask.commands': [
             'utils = rerodoc_app.cli:utils',

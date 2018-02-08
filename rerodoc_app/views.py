@@ -35,11 +35,10 @@ import six
 from elasticsearch_dsl import TermsFacet
 from flask import Blueprint, Markup, abort, current_app, render_template, \
     render_template_string, request, url_for
-from flask_babelex import gettext as _
+from flask_babelex import lazy_gettext as _
 from flask_menu import Menu, register_menu
-from werkzeug.utils import import_string
-
 from invenio_search import RecordsSearch
+from werkzeug.utils import import_string
 
 blueprint = Blueprint(
     'rerodoc_app',
@@ -78,7 +77,7 @@ def search():
 
 
 @blueprint.route("/news")
-@register_menu(blueprint, 'main.news', 'News', order=1)
+@register_menu(blueprint, 'main.news', _('News'), order=1)
 def news():
     """To do."""
     current_language = current_app.extensions.get('invenio-i18n').language
@@ -92,7 +91,7 @@ def news():
 
 
 @blueprint.route("/help")
-@register_menu(blueprint, 'main.help', 'Help', order=0)
+@register_menu(blueprint, 'main.help', _('Help'), order=0)
 def help():
     """To do."""
     current_language = current_app.extensions.get('invenio-i18n').language
@@ -106,7 +105,7 @@ def help():
 
 
 @blueprint.route("/help/search")
-@register_menu(blueprint, 'main.help.search', 'Search', order=0)
+@register_menu(blueprint, 'main.help.search', _('Search'), order=0)
 def help_search():
     """To do."""
     current_language = current_app.extensions.get('invenio-i18n').language
@@ -120,7 +119,7 @@ def help_search():
 
 
 @blueprint.route("/help/glossary")
-@register_menu(blueprint, 'main.help.glossary', 'Glossary', order=1)
+@register_menu(blueprint, 'main.help.glossary', _('Glossary'), order=1)
 def help_glossary():
     """To do."""
     current_language = current_app.extensions.get('invenio-i18n').language

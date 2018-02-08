@@ -29,11 +29,10 @@ from __future__ import absolute_import, print_function
 import os
 
 from flask_assets import Bundle
-from pkg_resources import resource_filename
-
 from invenio_assets import AngularGettextFilter, GlobBundle, NpmBundle, \
     current_assets
 from invenio_theme.bundles import js as base_js
+from pkg_resources import resource_filename
 
 css = NpmBundle(
     'scss/styles.scss',

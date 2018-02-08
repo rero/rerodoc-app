@@ -15,7 +15,6 @@ import six
 import slate3k as slate
 from flask import current_app
 from flask_cli import with_appcontext
-
 from invenio_base.app import create_cli
 from invenio_db import db
 from invenio_files_rest.models import Bucket, Location

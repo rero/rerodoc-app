@@ -27,11 +27,10 @@
 from __future__ import absolute_import, print_function
 
 import pkg_resources
-from jsonref import JsonLoader
-from jsonresolver.contrib.jsonref import json_loader_factory
-
 from invenio_records_rest.facets import terms_filter
 from invenio_search import RecordsSearch
+from jsonref import JsonLoader
+from jsonresolver.contrib.jsonref import json_loader_factory
 
 from . import facets
 from .query import search_factory
@@ -56,7 +55,7 @@ THEME_FOOTER_TEMPLATE = 'rerodoc_app/footer.html'
 BASE_TEMPLATE = 'rerodoc_app/page.html'
 COVER_TEMPLATE = 'invenio_theme/page_cover.html'
 SETTINGS_TEMPLATE = 'invenio_theme/page_settings.html'
-THEME_HEADER_LOGIN_TEMPLATE='rerodoc_app/header_login.html'
+THEME_HEADER_LOGIN_TEMPLATE = 'rerodoc_app/header_login.html'
 THEME_LOGO = "img/logo-rero-doc_en.png"
 
 SECRET_KEY = 'default_key'

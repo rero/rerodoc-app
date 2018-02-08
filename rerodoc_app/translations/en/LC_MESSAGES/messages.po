@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rerodoc 0.1.0.dev0\n"
 "Report-Msgid-Bugs-To: doc.support@rero.ch\n"
-"POT-Creation-Date: 2017-03-02 15:29+0100\n"
+"POT-Creation-Date: 2018-02-08 09:05+0100\n"
 "PO-Revision-Date: 2017-02-22 08:17+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -16,144 +16,446 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.5.1\n"
 
-#: rerodoc/config.py:19
+#: rerodoc_app/config.py:48
 msgid "French"
 msgstr ""
 
-#: rerodoc/config.py:20
+#: rerodoc_app/config.py:49
 msgid "German"
 msgstr ""
 
-#: rerodoc/config.py:21
+#: rerodoc_app/config.py:50
 msgid "Italian"
 msgstr ""
 
-#: rerodoc/config.py:35
-msgid "rerodoc"
+#: rerodoc_app/config.py:65
+msgid "rerodoc-app"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:1
-msgid "title"
+#. NOTE: This is a note to a translator.
+#: rerodoc_app/ext.py:47
+msgid "A translation string"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:3
-msgid "authors"
+#: rerodoc_app/manual_translations.txt:1
+msgid "title_en"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:5
-msgid "document_type"
-msgstr "document type"
+#: rerodoc_app/manual_translations.txt:2
+msgid "title_fr"
+msgstr ""
 
-#: rerodoc/manual_translations.txt:6
+#: rerodoc_app/manual_translations.txt:3
+msgid "other_title_en"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:4
+msgid "other_title_fr"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:5
+msgid "author"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:6
+msgid "editor"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:7
+msgid "thesis director"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:8
+msgid "thesis codirector"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:9
+msgid "edition"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:10
 msgid "publication"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:8
-msgid "book"
+#: rerodoc_app/manual_translations.txt:11
+msgid "print"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:10
+#: rerodoc_app/manual_translations.txt:12
+msgid "printer"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:13
+msgid "collation"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:14
+msgid "series"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:15
+msgid "imported_keyword_rero"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:16
+msgid "udc"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:17
+msgid "meeting"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:18
+msgid "content_note"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:19
+msgid "note"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:20
+msgid "other_edition"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:21
+msgid "external_link"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:22
+msgid "digitization"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:23
+msgid "isbn"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:24
+msgid "recid"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:25
+msgid "reroid"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:27
 msgid "fr"
-msgstr "french"
+msgstr ""
 
-#: rerodoc/manual_translations.txt:11
+#: rerodoc_app/manual_translations.txt:28
 msgid "en"
-msgstr "english"
+msgstr ""
 
-#: rerodoc/manual_translations.txt:12
+#: rerodoc_app/manual_translations.txt:29
 msgid "de"
-msgstr "german"
+msgstr ""
 
-#: rerodoc/manual_translations.txt:13
+#: rerodoc_app/manual_translations.txt:30
 msgid "es"
-msgstr "spanish"
+msgstr ""
 
-#: rerodoc/manual_translations.txt:14
+#: rerodoc_app/manual_translations.txt:31
 msgid "pt"
-msgstr "portugeze"
-
-#: rerodoc/manual_translations.txt:15
-msgid "doc_type"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:16
-msgid "institutions"
+#: rerodoc_app/manual_translations.txt:32
+#: rerodoc_app/templates/rerodoc_app/index.html:88
+msgid "type"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:17
-msgid "keywords"
+#: rerodoc_app/manual_translations.txt:33
+msgid "institution"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:18
+#: rerodoc_app/manual_translations.txt:34
+msgid "contributor"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:35
+msgid "keyword"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:36
 msgid "language"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:19
-msgid "RERO_DOC.NAVSITE.VALAIS"
-msgstr "Wallis"
-
-#: rerodoc/manual_translations.txt:20
-msgid "RERO_DOC.NAVSITE.GENEVE"
-msgstr "Geneva"
-
-#: rerodoc/manual_translations.txt:21
-msgid "RERO_DOC.NAVSITE.VAUD"
-msgstr "Vaud"
-
-#: rerodoc/manual_translations.txt:22
-msgid "RERO_DOC.NAVSITE.NEUCHATEL"
-msgstr "Neuchâtel"
-
-#: rerodoc/manual_translations.txt:23
-msgid "RERO_DOC.NAVSITE.GENEVE.BAAGE"
+#: rerodoc_app/manual_translations.txt:37
+msgid "institution.valais"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:24
-msgid "RERO_DOC.NAVSITE.GENEVE.BPUGE"
+#: rerodoc_app/manual_translations.txt:38
+msgid "institution.geneve"
 msgstr ""
 
-#: rerodoc/manual_translations.txt:25
-msgid "RERO_DOC.NAVSITE.GENEVE.IHEID"
-msgstr "Graduate Institute of International and Development Studies"
-
-#: rerodoc/manual_translations.txt:26
-msgid "RERO_DOC.NAVSITE.VAUD.CIO"
-msgstr "International Olympic Comitee"
-
-#: rerodoc/manual_translations.txt:27
-msgid "RERO_DOC.NAVDOCTYPE.BOOK"
-msgstr "book"
-
-#: rerodoc/manual_translations.txt:28
-msgid "RERO_DOC.NAVSITE.NEUCHATEL.BICJ"
+#: rerodoc_app/manual_translations.txt:39
+msgid "institution.vaud"
 msgstr ""
 
-#: rerodoc/templates/rerodoc/record_detail.html:83
+#: rerodoc_app/manual_translations.txt:40
+msgid "institution.neuchatel"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:41
+#: rerodoc_app/manual_translations.txt:47
+msgid "institution.geneve.baage"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:42
+msgid "institution.geneve.bpuge"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:43
+#: rerodoc_app/manual_translations.txt:48
+msgid "institution.geneve.iheid"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:44
+msgid "institution.vaud.cio"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:45
+msgid "type.book"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:46
+msgid "institution.neuchatel_jura.bicj"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:49
+msgid "udc.sciences_exactes_et_naturelles"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:50
+msgid "udc.sciences_exactes_et_naturelles.sciences_de_la_terre "
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:107 rerodoc_app/views.py:81
+msgid "News"
+msgstr ""
+
+#: rerodoc_app/views.py:95
+msgid "Help"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/header.html:89
+#: rerodoc_app/templates/rerodoc_app/search_header.html:6
+#: rerodoc_app/views.py:109
+msgid "Search"
+msgstr ""
+
+#: rerodoc_app/views.py:123
+msgid "Glossary"
+msgstr ""
+
+#: rerodoc_app/static/templates/rerodoc_app/count.html:3
+msgid "Found {{$count}} result."
+msgid_plural "Found {{$count}} results."
+msgstr[0] ""
+msgstr[1] ""
+
+#: rerodoc_app/static/templates/rerodoc_app/count.html:4
+msgid "No results found."
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/header.html:35
+msgid "Toggle navigation"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/header_login.html:27
+msgid "Log in"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/header_login.html:28
+msgid "Sign up"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/header_login.html:45
+#: rerodoc_app/templates/rerodoc_app/header_login.html:49
+msgid "Log out"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:14
+msgid "objects"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:52
+msgid "Collection Page"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:62
+msgid "Previous"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:66
+msgid "Next"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:75
+msgid "Institutions"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:100
+msgid "Digitized Press"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/index.html:104
+msgid "View details"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:87
 msgid "See also"
 msgstr ""
 
-#: rerodoc/templates/rerodoc/record_detail.html:84
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:87
+msgid "Similar Records"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:88
 msgid "Links"
 msgstr ""
 
-#: rerodoc/templates/rerodoc/record_detail.html:85
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:88
+msgid "Permalink"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:89
 msgid "Share"
 msgstr ""
 
-#: rerodoc/templates/rerodoc/record_detail.html:91
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:95
 msgid "Export As"
 msgstr ""
 
-#: rerodoc/templates/rerodoc/records_export_unsupported.html:28
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:112
+msgid "Details"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:114
+msgid "Summary"
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/records_export_unsupported.html:28
 msgid "Unsupported export format"
 msgstr ""
 
-#: rerodoc/templates/rerodoc/records_export_unsupported.html:29
+#: rerodoc_app/templates/rerodoc_app/records_export_unsupported.html:29
 msgid "The export format you are trying to access has been deprecated."
 msgstr ""
 
+#: rerodoc_app/templates/rerodoc_app/search_ui.html:97
+msgid "Search failed."
+msgstr ""
+
+#: rerodoc_app/templates/rerodoc_app/search_ui.html:103
+msgid "Loading..."
+msgstr ""
+
 #~ msgid "RERO_DOC.NAVSITE.VAUD.IHEID"
+#~ msgstr ""
+
+#~ msgid "rerodoc"
+#~ msgstr ""
+
+#~ msgid "title"
+#~ msgstr ""
+
+#~ msgid "authors"
+#~ msgstr ""
+
+#~ msgid "document_type"
+#~ msgstr ""
+
+#~ msgid "publication"
+#~ msgstr ""
+
+#~ msgid "book"
+#~ msgstr ""
+
+#~ msgid "fr"
+#~ msgstr "french"
+
+#~ msgid "en"
+#~ msgstr "english"
+
+#~ msgid "de"
+#~ msgstr "german"
+
+#~ msgid "es"
+#~ msgstr "spanish"
+
+#~ msgid "pt"
+#~ msgstr "portugeze"
+
+#~ msgid "doc_type"
+#~ msgstr ""
+
+#~ msgid "institutions"
+#~ msgstr ""
+
+#~ msgid "keywords"
+#~ msgstr ""
+
+#~ msgid "language"
+#~ msgstr ""
+
+#~ msgid "RERO_DOC.NAVSITE.VALAIS"
+#~ msgstr "Wallis"
+
+#~ msgid "RERO_DOC.NAVSITE.GENEVE"
+#~ msgstr "Geneva"
+
+#~ msgid "RERO_DOC.NAVSITE.VAUD"
+#~ msgstr "Vaud"
+
+#~ msgid "RERO_DOC.NAVSITE.NEUCHATEL"
+#~ msgstr "Neuchâtel"
+
+#~ msgid "RERO_DOC.NAVSITE.GENEVE.BAAGE"
+#~ msgstr ""
+
+#~ msgid "RERO_DOC.NAVSITE.GENEVE.BPUGE"
+#~ msgstr ""
+
+#~ msgid "RERO_DOC.NAVSITE.GENEVE.IHEID"
+#~ msgstr "Graduate Institute of International and Development Studies"
+
+#~ msgid "RERO_DOC.NAVSITE.VAUD.CIO"
+#~ msgstr "International Olympic Comitee"
+
+#~ msgid "RERO_DOC.NAVDOCTYPE.BOOK"
+#~ msgstr "book"
+
+#~ msgid "RERO_DOC.NAVSITE.NEUCHATEL.BICJ"
+#~ msgstr ""
+
+#~ msgid "insitution.valais"
+#~ msgstr ""
+
+#~ msgid "insitution.geneve"
+#~ msgstr ""
+
+#~ msgid "insitution.vaud"
+#~ msgstr ""
+
+#~ msgid "insitution.neuchatel"
+#~ msgstr ""
+
+#~ msgid "insitution.geneve.baage"
+#~ msgstr ""
+
+#~ msgid "insitution.geneve.bpuge"
+#~ msgstr ""
+
+#~ msgid "insitution.geneve.iheid"
+#~ msgstr ""
+
+#~ msgid "insitution.vaud.cio"
+#~ msgstr ""
+
+#~ msgid "langue"
+#~ msgstr ""
+
+#~ msgid "mot-clé"
 #~ msgstr ""
 

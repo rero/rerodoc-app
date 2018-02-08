@@ -1,3 +1,14 @@
+.rero-brief-view {
+        h2 {
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 8px;
+    }
+    h3 {
+        font-size: 13px;
+        margin: 3px 0px 8px 0px;
+    }
+}
 .rero-detailed-view {
     .rero-metadata {
         ul {
@@ -8,13 +19,10 @@
             list-style: none;
         }
     }
-    h2 {
-        font-size: 15px;
-        margin-top: 0px;
-        margin-bottom: 8px;
+    .rero-menu-box {
+        .nav-pills>li>a {
+            padding: 0;
+        }
     }
-    h3 {
-        font-size: 13px;
-        margin: 3px 0px 8px 0px;
-    }
+
 }

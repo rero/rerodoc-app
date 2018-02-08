@@ -23,6 +23,15 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
+set +e
+grep -r fuzzy rerodoc_app/translations
+if [ $? -eq 0 ]
+then
+    echo "Error: fuzzy tranlations!"
+    exit 1
+fi
+set -e
+
 pydocstyle rerodoc_app tests docs && \
 isort -rc -c -df && \
 check-manifest --ignore ".travis-*" && \

@@ -29,7 +29,6 @@ from __future__ import absolute_import, print_function
 from flask import current_app, request, session
 from flask_principal import ActionNeed
 from flask_security import current_user
-
 from invenio_access import Permission
 from invenio_files_rest.models import Bucket, MultipartObject, ObjectVersion
 from invenio_records.api import Record

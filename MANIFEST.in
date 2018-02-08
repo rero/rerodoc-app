@@ -76,3 +76,10 @@ recursive-include rerodoc_app *.png
 recursive-include rerodoc_app *.py
 recursive-include rerodoc_app *.scss
 recursive-include rerodoc_app *.txt
+
+# added by check_manifest.py
+recursive-include data *.json
+recursive-include rerodoc_app *.DS_Store
+recursive-include rerodoc_app *.json
+recursive-include rerodoc_app *.py
+recursive-include rerodoc_app *.rdf

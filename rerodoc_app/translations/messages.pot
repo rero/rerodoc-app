@@ -10,13 +10,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: software@rero.ch\n"
 "POT-Creation-Date: 2018-02-08 09:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team: German (https://www.transifex.com/rero/teams/77935/de/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.1\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: rerodoc_app/config.py:48
 msgid "French"
@@ -350,3 +349,4 @@ msgstr ""
 #: rerodoc_app/templates/rerodoc_app/search_ui.html:103
 msgid "Loading..."
 msgstr ""
+
