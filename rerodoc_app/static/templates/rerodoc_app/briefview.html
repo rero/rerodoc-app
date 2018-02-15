@@ -1,37 +1,62 @@
 <ul class="rero-search-brief">
-  <li ng-repeat="record in vm.invenioSearchResults.hits.hits track by $index">
-    <h2><a target="_self" ng-href="/record/{{record.id}}" class="">
-        {{ record.metadata.title[0].main }}
-        <span ng-show="record.metadata.title[0].sub">: {{record.metadata.title[0].sub}}</span>
-      </a>
-    </h2>
-    <p>
-      <ul ng-show="record.metadata.contributor" class="rero-contributor">
-      <li ng-repeat="contributor in record.metadata.contributor| roles: ['author', 'editor', 'thesis director', 'thesis codirector']">
-        {{contributor.name}}
-      </li>
-    </ul>
-  </p>
-    <p ng-show="record.metadata.edition">
-      {{record.metadata.edition.statement}}
-      <span hg-show="record.metadata.edition.remainder">
-        / {{record.metadata.edition.remainder}}
-      </span>
-    </p>
-    <p ng-show="record.metadata.publication">
-      <span hg-show="record.metadata.publication.location">
-        {{record.metadata.publication.location}} /
-      </span>
-      {{record.metadata.publication.publisher}}
-      <span hg-show="record.metadata.publication.date_label">, {{record.metadata.publication.date_label}}
-    </p>
-    <p ng-show="record.metadata.summary | summary"><strong><span translate>Summary</span>: </strong>{{ record.metadata.summary | summary }}</p>
-    <p ng-show="record.highlight.fulltext">
-      <strong>Fulltext:</strong>
-    <ul class="highlight">
-    <li ng-repeat="highlight in record.highlight.fulltext" ng-bind-html="highlight"></li>
-    </ul>
-    </p>
-    <hr/>
+  <li ng-repeat="record in vm.invenioSearchResults.hits.hits track by $index"  ng-controller="RecordController">
+    <div class="media rero-brief-view">
+      <div class="col-md-2">
+        <div class="media-left center-block">
+          <a ng-show="record.metadata._files" ng-href="/record/{{record.id}}/files/{{filename(record)}}" target="_none">
+            <img class="rero-thumb-sm media-object  center-block"" src="/record/{{record.id}}/files/{{thumbnail(record)}}" alt="Document">
+          </a>
+          <div ng-hide="record.metadata._files" class="text-center">
+              <i class="rero-thumb fa fa-file-text-o"></i>
+          </div>
+          <div class="caption text-center">
+            {{record.metadata.type.main | translate}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="media-body">
+          <h2><a target="_self" ng-href="/record/{{record.id}}" class="">
+            {{ record.metadata.title[0].main }}
+            <span ng-show="record.metadata.title[0].sub">: {{record.metadata.title[0].sub}}</span>
+          </a>
+        </h2>
+        <p>
+          <ul ng-show="record.metadata.contributor" class="rero-contributor">
+            <li ng-repeat="contributor in record.metadata.contributor| roles: ['author', 'editor', 'thesis director', 'thesis codirector']">
+              {{contributor.name}}
+            </li>
+          </ul>
+        </p>
+        <p ng-show="record.metadata.edition">
+          {{record.metadata.edition.statement}}
+          <span hg-show="record.metadata.edition.remainder">
+            / {{record.metadata.edition.remainder}}
+          </span>
+        </p>
+        <p ng-show="record.metadata.publication">
+          <span hg-show="record.metadata.publication.location">
+            {{record.metadata.publication.location}} /
+          </span>
+          {{record.metadata.publication.publisher}}
+          <span hg-show="record.metadata.publication.date_label">, {{record.metadata.publication.date_label}}</span>
+          </p>
+          <p ng-show="record.metadata.summary | summary">
+            <strong>
+              <span translate>Summary</span>:
+            </strong>{{ record.metadata.summary | summary }}
+          </p>
+          <p ng-show="record.highlight.fulltext">
+            <strong>Fulltext:</strong>
+            <ul class="highlight">
+              <li ng-repeat="highlight in record.highlight.fulltext"
+                  ng-bind-html="highlight">
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+      <hr/>
+    </div>
   </li>
 </ul>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rerodoc 0.1.0.dev0\n"
 "Report-Msgid-Bugs-To: doc.support@rero.ch\n"
-"POT-Creation-Date: 2018-02-08 09:05+0100\n"
+"POT-Creation-Date: 2018-02-12 16:08+0100\n"
 "PO-Revision-Date: 2017-02-22 08:17+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,24 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.1\n"
 
-#: rerodoc_app/config.py:48
+#: rerodoc_app/config.py:47
 msgid "French"
 msgstr ""
 
-#: rerodoc_app/config.py:49
+#: rerodoc_app/config.py:48
 msgid "German"
 msgstr ""
 
-#: rerodoc_app/config.py:50
+#: rerodoc_app/config.py:49
 msgid "Italian"
 msgstr ""
 
-#: rerodoc_app/config.py:65
+#: rerodoc_app/config.py:64
 msgid "rerodoc-app"
 msgstr ""
 
 #. NOTE: This is a note to a translator.
-#: rerodoc_app/ext.py:47
+#: rerodoc_app/ext.py:46
 msgid "A translation string"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgid "institution.neuchatel"
 msgstr ""
 
 #: rerodoc_app/manual_translations.txt:41
-#: rerodoc_app/manual_translations.txt:47
+#: rerodoc_app/manual_translations.txt:48
 msgid "institution.geneve.baage"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgid "institution.geneve.bpuge"
 msgstr ""
 
 #: rerodoc_app/manual_translations.txt:43
-#: rerodoc_app/manual_translations.txt:48
+#: rerodoc_app/manual_translations.txt:49
 msgid "institution.geneve.iheid"
 msgstr ""
 
@@ -219,33 +219,49 @@ msgid "type.book"
 msgstr ""
 
 #: rerodoc_app/manual_translations.txt:46
+msgid "book"
+msgstr ""
+
+#: rerodoc_app/manual_translations.txt:47
 msgid "institution.neuchatel_jura.bicj"
 msgstr ""
 
-#: rerodoc_app/manual_translations.txt:49
+#: rerodoc_app/manual_translations.txt:50
 msgid "udc.sciences_exactes_et_naturelles"
 msgstr ""
 
-#: rerodoc_app/manual_translations.txt:50
+#: rerodoc_app/manual_translations.txt:51
 msgid "udc.sciences_exactes_et_naturelles.sciences_de_la_terre "
 msgstr ""
 
-#: rerodoc_app/templates/rerodoc_app/index.html:107 rerodoc_app/views.py:81
+#: rerodoc_app/templates/rerodoc_app/index.html:107 rerodoc_app/views.py:80
 msgid "News"
 msgstr ""
 
-#: rerodoc_app/views.py:95
+#: rerodoc_app/views.py:94
 msgid "Help"
 msgstr ""
 
 #: rerodoc_app/templates/rerodoc_app/header.html:89
 #: rerodoc_app/templates/rerodoc_app/search_header.html:6
-#: rerodoc_app/views.py:109
+#: rerodoc_app/views.py:108
 msgid "Search"
 msgstr ""
 
-#: rerodoc_app/views.py:123
+#: rerodoc_app/views.py:122
 msgid "Glossary"
+msgstr ""
+
+#: rerodoc_app/static/templates/rerodoc_app/briefview.html:9
+msgid ""
+"\n"
+"            {{record.metadata.type.main}}\n"
+"          "
+msgstr ""
+
+#: rerodoc_app/static/templates/rerodoc_app/briefview.html:41
+#: rerodoc_app/templates/rerodoc_app/record_detail.html:114
+msgid "Summary"
 msgstr ""
 
 #: rerodoc_app/static/templates/rerodoc_app/count.html:3
@@ -329,10 +345,6 @@ msgstr ""
 
 #: rerodoc_app/templates/rerodoc_app/record_detail.html:112
 msgid "Details"
-msgstr ""
-
-#: rerodoc_app/templates/rerodoc_app/record_detail.html:114
-msgid "Summary"
 msgstr ""
 
 #: rerodoc_app/templates/rerodoc_app/records_export_unsupported.html:28

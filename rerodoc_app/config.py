@@ -284,3 +284,7 @@ OAISERVER_METADATA_FORMATS = {
         'namespace': 'http://www.loc.gov/MARC21/slim',
     }
 }
+
+SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://rerodoc:rerodoc@localhost:5432/rerodoc'  # nopep8
+APP_ENABLE_SECURE_HEADERS = 0
+INVENIO_DB_VERSIONING = 0

@@ -27,6 +27,7 @@
 
 from dojson.contrib.marc21.utils import create_record
 from flask import current_app
+from invenio_jsonschemas import current_jsonschemas as jsonschemas
 
 from .dojson import book
 from .tasks import create_records

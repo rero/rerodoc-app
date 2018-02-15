@@ -44,20 +44,20 @@ def extract_date(date):
     to_date = None
 
     # year only
-    regex = re.match(r'^(\w{4})-{0,1}$', date)
+    regex = re.match(r'^(\d{4})-{0,1}$', date)
     if regex:
         from_date = regex.group(1)
 
-    regex = re.match(r'^(\w{4})-(\w{4})$', date)
+    regex = re.match(r'^(\d{4})-(\d{4})$', date)
     if regex:
         from_date = regex.group(1)
         to_date = regex.group(2)
     # year-month-day
-    regex = re.match(r'^(\w{4}-\w{1,2}-\w{1,2})-{0,1}$', date)
+    regex = re.match(r'^(\d{4}-\d{1,2}-\d{1,2})-{0,1}$', date)
     if regex:
         from_date = regex.group(1)
     if not from_date:
-        res = re.findall(r'(\w{4})', date)
+        res = re.findall(r'(\d{4})', date)
         if len(res) == 1:
             from_date = res[0]
         if len(res) == 2:
@@ -379,6 +379,8 @@ def content_note2marc(self, key, value):
 # @utils.filter_values
 def access_restriction(self, key, value):
     """Content Note Statement."""
+    if not value.get('f') and value.get('a', '').endswith('RERO'):
+        return 'Restricted access'
     return value.get('f')
 
 

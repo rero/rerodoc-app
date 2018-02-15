@@ -12,6 +12,39 @@ require([
     }]);
     angular.module('rerodocHighlights', ['ngSanitize']);
     angular.module('rerodocBriefView', [])
+     .controller('RecordController', ['$scope', '$log', function($scope, $log) {
+        function first_file_infos(record) {
+          var files = record.metadata._files;
+          var file = {
+            'file_name': undefined,
+            'size': 0
+          };
+          var name = undefined;
+          angular.forEach(files, function(value){
+            if (value.filetype == 'main') {
+
+              file.file_name = value.key;
+              name = value.key;
+              file.size = value.size;
+              return file;
+            }
+          });
+          if (name !== undefined) {
+            var basename = name.substring(0, name.lastIndexOf('.'));
+            file.thumb_name =  basename + '_thumb.jpg'
+          }
+          return file;
+        };
+        $scope.thumbnail = function(record){
+          var infos = first_file_infos(record);
+
+          return infos.thumb_name;
+        };
+        $scope.filename = function(record){
+          var infos = first_file_infos(record);
+          return infos.file_name;
+        };
+     }])
     .filter('summary', function() {
         return function(summaries) {
             var summary = undefined;

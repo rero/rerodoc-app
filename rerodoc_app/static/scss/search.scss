@@ -19,7 +19,9 @@ invenio-search-facets {
 invenio-search-results li {
     list-style: none;
 }
-
+ul.rero-search-brief {
+    padding: 0;
+}
 .rero-search-brief {
     h2 {
         font-size: 15px;

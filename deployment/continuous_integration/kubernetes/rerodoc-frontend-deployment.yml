@@ -62,3 +62,15 @@ spec:
           value: '0'
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - mountPath: /rerodoc/rerodoc/var/instance/files
+          name: rerodoc-data-files
+        - mountPath: /rerodoc/rerodoc/var/instance/uploads
+          name: rerodoc-data-uploads
+      volumes:
+      - name: rerodoc-data-files
+        hostPath:
+          path: /data/docker/rerodoc/files
+      - name: rerodoc-data-uploads
+        hostPath:
+          path: /data/docker/rerodoc/upload

@@ -26,6 +26,13 @@ def test_from_marc():
     })
     assert record.get('access_restriction') == 'Restricted access'
 
+    record = marc2record({
+        '506__': {
+            'a': u'Accès réservé aux institutions membres de RERO'
+        }
+    })
+    assert record.get('access_restriction') == 'Restricted access'
+
 
 def test_marc2marc():
     marc = {

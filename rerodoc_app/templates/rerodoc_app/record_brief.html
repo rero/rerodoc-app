@@ -4,8 +4,14 @@
     {%- set files = record|get_files_list -%}
       <div class="col-md-3">
         <div class="media-left center-block">
-                <a href="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].file_name) }}" target="_none"><img class="media-object  center-block" src="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].thumb_name) }}" alt="Document"/></a>
-                <div class="caption text-center">{{_(record.type.main | title)}}</div>
+                {% if files %}
+                <a href="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].file_name) }}" target="_none"><img class="rero-thumb center-block" src="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].thumb_name) }}" alt="Document"/></a>
+                {% else %}
+                <div class="text-center">
+                  <i class="rero-thumb fa fa-file-text-o"></i>
+                </div>
+                {% endif %}
+                <div class="caption text-center">{{_(record.type.main) | title}}</div>
         </div>
       </div>
       <div class="col-md-9">

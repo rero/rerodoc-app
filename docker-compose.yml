@@ -73,43 +73,45 @@
 #   command: ['./start.sh']
 
 postgresql:
-  restart: "always"
-  image: postgres
-  environment:
-    - POSTGRES_USER=rerodoc
-    - POSTGRES_DB=rerodoc
-    - POSTGRES_PASSWORD=rerodoc
-  ports:
-    - "5432:5432"
+ restart: "always"
+ image: postgres
+ environment:
+   - POSTGRES_USER=rerodoc
+   - POSTGRES_DB=rerodoc
+   - POSTGRES_PASSWORD=rerodoc
+ ports:
+   - "5432:5432"
 
 redis:
-  restart: "always"
-  image: redis
-  ports:
-    - "6379:6379"
-  volumes:
-      - /Users/maj/devel/virtualenvs/rerodoc-app/src/rerodoc-app/redis.conf:/usr/local/etc/redis/redis.conf
+ restart: "always"
+ image: redis
+ ports:
+   - "6379:6379"
+ volumes:
+     - /Users/maj/devel/virtualenvs/rerodoc-app/src/rerodoc-app/redis.conf:/usr/local/etc/redis/redis.conf
 
 elasticsearch:
   restart: "always"
-  image: docker.elastic.co/elasticsearch/elasticsearch:5.6.7
+  image: elasticsearch:5.6.7
+  # image: docker.elastic.co/elasticsearch/elasticsearch:5.6.7
   ports:
     - "9200:9200"
     - "9300:9300"
-  environment:
-    - xpack.security.enabled=false
-    - xpack.monitoring.enabled=false
+  # command: ['./bin/elasticsearch', '-Expack.security.enabled=false']
+  # environment:
+    # - xpack.security.enabled=false
+    # - xpack.monitoring.enabled=false
 
 rabbitmq:
-  restart: "always"
-  image: rabbitmq:3-management
-  ports:
-    - "4369:4369"
-    - "5672:5672"
-    - "15672:15672"
+ restart: "always"
+ image: rabbitmq:3-management
+ ports:
+   - "4369:4369"
+   - "5672:5672"
+   - "15672:15672"
 kibana:
-    image: docker.elastic.co/kibana/kibana:5.6.7
-    ports:
-        - 5601:5601
-    links:
-        - elasticsearch
+   image: docker.elastic.co/kibana/kibana:5.6.7
+   ports:
+       - 5601:5601
+   links:
+       - elasticsearch

@@ -18,23 +18,23 @@ invenio index queue init
 invenio utils alias records iheid
 
 echo "Creating accounts..."
-# # create new user
-# invenio users create -a admin@rero.ch --password administrator
-# invenio users create -a librarian@rero.ch --password librarian
+# create new user
+invenio users create -a admin@rero.ch --password administrator
+invenio users create -a librarian@rero.ch --password librarian
 
-# # create roles
-# invenio roles create -d "Admins Group" admins
-# invenio roles create -d "Super Users Group" superusers
-# invenio roles create -d "Cataloguer" cataloguer
+# create roles
+invenio roles create -d "Admins Group" admins
+invenio roles create -d "Super Users Group" superusers
+invenio roles create -d "Cataloguer" cataloguer
 
-# # grant accesses to action roles
-# invenio access allow admin-access role admins
-# invenio access allow superuser-access role superusers
+# grant accesses to action roles
+invenio access allow admin-access role admins
+invenio access allow superuser-access role superusers
 
-# # grant roles to users
-# invenio roles add admin@rero.ch admins
-# invenio roles add admin@rero.ch superusers
-# invenio roles add librarian@rero.ch cataloguer
+# grant roles to users
+invenio roles add admin@rero.ch admins
+invenio roles add admin@rero.ch superusers
+invenio roles add librarian@rero.ch cataloguer
 
 invenio collections create rerodoc
 
@@ -73,4 +73,10 @@ invenio collections create -q 'specific_collection:"BAA - Bibliographie Hodler"'
 #invenio oaiharvester harvest --signals -u http://doc.rero.ch/oai2d -s "book" -d oia -m marcxml -k -e 'utf-8'
 echo "Load data..."
 invenio utils load data/full_book.json
-dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -vv -m 500
+
+dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -m 100 --skip
+
+# invenio index run
+invenio index run -d -c 10
+# For data correction
+#dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -vvv -m 500 --no-files
