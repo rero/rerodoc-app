@@ -1,4 +1,4 @@
-FROM python:3.5-slim
+FROM python:3.6.4-slim-stretch
 
 LABEL maintainer="software@rero.ch"
 LABEL description="RERO DOC Invenio application by RERO."

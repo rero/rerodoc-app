@@ -42,7 +42,7 @@ env:
 
 python:
   - "2.7"
-  - "3.5"
+  - "3.6.4"
 
 before_install:
   - "nvm install 6; nvm use 6"
@@ -70,6 +70,6 @@ deploy:
   distributions: "compile_catalog sdist bdist_wheel"
   on:
     tags: true
-    python: "2.7"
+    python: "3.6"
     repo: rero/rerodoc-app
     condition: $DEPLOY = true
