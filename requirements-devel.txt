@@ -58,7 +58,7 @@
 -e git+https://github.com/inveniosoftware/invenio-oaiharvester.git#egg=invenio-oaiharvester
 
 #Local projects
-#-e git+https://github.com/rero/invenio-collections.git#egg=invenio-collections
+-e git+https://github.com/rero/invenio-collections.git#egg=invenio-collections
 
 
 redis

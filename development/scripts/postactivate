@@ -1,0 +1,13 @@
+#!/bin/bash
+# This hook is sourced after this virtualenv is activated.
+
+export FLASK_DEBUG=0
+export INVENIO_SEARCH_ELASTIC_HOSTS=localhost:19200
+export INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://rerodoc:rerodoc@localhost:15432/rerodoc
+export INVENIO_CELERY_BROKER_URL=amqp://guest:guest@localhost:15672//
+export INVENIO_CELERY_RESULT_BACKEND=redis://localhost:16379/1
+export INVENIO_CACHE_REDIS_URL='redis://localhost:16379/1'
+export INVENIO_ACCOUNTS_SESSION_REDIS_URL='redis://localhost:16379/0'
+export INVENIO_DB_VERSIONING=0
+export INVENIO_APP_ENABLE_SECURE_HEADERS=0
+export MAGICK_HOME=/usr/local/opt/imagemagick@6
