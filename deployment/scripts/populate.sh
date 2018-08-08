@@ -4,6 +4,7 @@ FLASK_DEBUG=0
 
 invenio db destroy --yes-i-know || true
 invenio index destroy --force --yes-i-know || true
+rm -fr rerodoc/var/instance/files/* || true
 
 invenio db init create
 invenio index init

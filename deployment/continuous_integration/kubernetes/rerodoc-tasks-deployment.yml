@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: doc-tasks
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -69,8 +69,8 @@ spec:
       volumes:
       - name: rerodoc-data-files
         hostPath:
-          path: /data/docker/rerodoc/files
+          path: /data/rerodoc/files
       - name: rerodoc-data-uploads
         hostPath:
-          path: /data/docker/rerodoc/upload
+          path: /data/rerodoc/upload
 

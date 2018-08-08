@@ -5,7 +5,7 @@ LABEL description="RERO DOC Invenio application by RERO."
 
 
 
-RUN apt-get update && apt-get install -y git curl libmagickwand-dev
+RUN apt-get update && apt-get install -y git curl gnupg2 libmagickwand-dev
 
 RUN pip install -U setuptools pip &&\
     pip install -U virtualenv

@@ -9,6 +9,7 @@ spec:
   containers:
   - name: rerodoc-app
     image: rero/rerodoc-app:latest
+    #command: ["./populate.sh"]
     command: ["tail", "-f", "/dev/null"]
     imagePullPolicy: Always
     env:
@@ -65,7 +66,7 @@ spec:
   volumes:
   - name: rerodoc-data-files
     hostPath:
-      path: /data/docker/rerodoc/files
+      path: /data/rerodoc/files
   - name: rerodoc-data-uploads
     hostPath:
-      path: /data/docker/rerodoc/upload
+      path: /data/rerodoc/upload

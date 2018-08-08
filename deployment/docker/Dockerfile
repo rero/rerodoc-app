@@ -3,7 +3,7 @@ FROM python:3.6.4-slim-stretch
 LABEL maintainer="software@rero.ch"
 LABEL description="RERO DOC Invenio application by RERO."
 
-RUN apt-get update && apt-get install -y curl git gcc libmagickwand-dev\
+RUN apt-get update && apt-get install -y curl git gcc gnupg2 vim procps libmagickwand-dev\
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get install -y nodejs \
     && pip install -U setuptools pip && \
