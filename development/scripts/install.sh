@@ -1,7 +1,8 @@
 #! /bin/bash
 
 npm i -g --prefix $VIRTUAL_ENV npm
-npm install --prefix $VIRTUAL_ENV -g node-sass clean-css clean-css-cli requirejs uglify-js
+npm update && npm install --prefix $VIRTUAL_ENV --silent -g node-sass@4.9.0 clean-css@3.4.19 uglify-js@2.7.3 requirejs@2.2.0
+
 pip install -r $VIRTUAL_ENV/src/rerodoc-app/requirements-devel.txt
 pip install -e $VIRTUAL_ENV/src/rerodoc-app/[all]
 invenio collect -v

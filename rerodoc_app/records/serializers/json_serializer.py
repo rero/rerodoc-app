@@ -25,10 +25,10 @@
 """Serializers for RERO DOC."""
 
 from flask import json
+from invenio_records_rest.schemas.json import RecordSchemaJSONV1
 from invenio_records_rest.serializers.json import JSONSerializer
 from invenio_records_rest.serializers.response import record_responsify, \
     search_responsify
-from invenio_records_rest.serializers.schemas.json import RecordSchemaJSONV1
 from marshmallow import Schema, fields
 
 

@@ -12,7 +12,7 @@ import uuid
 import click
 import six
 from flask import current_app
-from flask_cli import with_appcontext
+from flask.cli import with_appcontext
 from invenio_base.app import create_cli
 from invenio_db import db
 from invenio_files_rest.models import Bucket, Location
@@ -31,7 +31,7 @@ def utils():
 
 
 @utils.command()
-@with_appcontext
+# @with_appcontext
 def list_routes():
     """To do."""
     import urllib

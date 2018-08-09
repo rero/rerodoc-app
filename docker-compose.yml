@@ -80,13 +80,13 @@ postgresql:
    - POSTGRES_DB=rerodoc
    - POSTGRES_PASSWORD=rerodoc
  ports:
-   - "5432:5432"
+   - "15432:5432"
 
 redis:
  restart: "always"
  image: redis
  ports:
-   - "6379:6379"
+   - "16379:6379"
  volumes:
      - /Users/maj/devel/virtualenvs/rerodoc-app/src/rerodoc-app/redis.conf:/usr/local/etc/redis/redis.conf
 
@@ -95,8 +95,8 @@ elasticsearch:
   image: elasticsearch:5.6.7
   # image: docker.elastic.co/elasticsearch/elasticsearch:5.6.7
   ports:
-    - "9200:9200"
-    - "9300:9300"
+    - "19200:9200"
+    - "19300:9300"
   # command: ['./bin/elasticsearch', '-Expack.security.enabled=false']
   # environment:
     # - xpack.security.enabled=false
@@ -106,12 +106,12 @@ rabbitmq:
  restart: "always"
  image: rabbitmq:3-management
  ports:
-   - "4369:4369"
-   - "5672:5672"
-   - "15672:15672"
+   - "14369:4369"
+   - "15672:5672"
+   # - "15672:15672"
 kibana:
    image: docker.elastic.co/kibana/kibana:5.6.7
    ports:
-       - 5601:5601
+       - 15601:5601
    links:
        - elasticsearch

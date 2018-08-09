@@ -144,6 +144,9 @@ setup(
         'egg_info': EggInfoWithCompileCatalog
     },
     entry_points={
+        'console_scripts': [
+            'rerodoc-app = invenio_app.cli:cli',
+        ],
         'flask.commands': [
             'utils = rerodoc_app.cli:utils',
         ],

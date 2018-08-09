@@ -25,7 +25,7 @@
 """Serializers for RERO DOC."""
 
 from invenio_records_rest.serializers.json import JSONSerializer
-from invenio_records_rest.serializers.schemas.json import RecordSchemaJSONV1
+from invenio_records_rest.schemas.json import RecordSchemaJSONV1
 from invenio_records_rest.serializers.response import record_responsify
 from invenio_records_rest.serializers.response import search_responsify
 from flask import json, request, render_template
