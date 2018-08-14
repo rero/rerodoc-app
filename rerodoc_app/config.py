@@ -288,3 +288,16 @@ OAISERVER_METADATA_FORMATS = {
 SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://rerodoc:rerodoc@localhost:5432/rerodoc'  # nopep8
 APP_ENABLE_SECURE_HEADERS = 0
 INVENIO_DB_VERSIONING = 0
+
+
+def get_file(url):
+    import re
+    from invenio_pidstore.resolver import Resolver
+    from invenio_records_files.api import Record
+    pid, filename = re.search(r'doc.rero.ch/record/(\w+)/files/(.*)', url).groups()
+    resolver = Resolver('recid', 'rec', Record.get_record)
+    pid, record = resolver.resolve(pid)
+    return record.files[filename].obj.file.storage().fileurl.replace('file://', '')
+
+
+MULTIVIO_FILENAME_TO_PATH = get_file
