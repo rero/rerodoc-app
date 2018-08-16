@@ -5,7 +5,8 @@
       <div class="col-md-3">
         <div class="media-left center-block">
                 {% if files %}
-                <a href="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].file_name) }}" target="_none"><img class="rero-thumb center-block" src="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].thumb_name) }}" alt="Document"/></a>
+<!--                 <a href="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].file_name) }}" target="_none"><img class="rero-thumb center-block" src="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].thumb_name) }}" alt="Document"/></a> -->
+                    <a href="{{ url_for('views.multivio_ui', doctype='recid', pid=record.recid) }}" target="_none"><img class="rero-thumb center-block" src="{{ url_for('invenio_records_ui.recid_files', pid_value=record.recid, filename=files[0].thumb_name) }}" alt="Document"/></a>
                 {% else %}
                 <div class="text-center">
                   <i class="rero-thumb fa fa-file-text-o"></i>

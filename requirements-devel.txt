@@ -59,6 +59,6 @@
 
 #Local projects
 -e git+https://github.com/rero/invenio-collections.git#egg=invenio-collections
-
+-e git+https://github.com/git@github.com:rero/invenio-multivio.git
 
 redis

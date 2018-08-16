@@ -1,5 +1,6 @@
 #Patches
 
 git+https://github.com/rero/invenio-collections#egg=invenio-collections
+git+https://github.com/rero/invenio-multivio#egg=invenio-multivio
 redis
 flower

@@ -3,7 +3,7 @@
     <div class="media rero-brief-view">
       <div class="col-md-2">
         <div class="media-left center-block">
-          <a ng-show="record.metadata._files" ng-href="/record/{{record.id}}/files/{{filename(record)}}" target="_none">
+          <a ng-show="record.metadata._files" ng-href="/multivio/recid/{{record.id}}" target="_none">
             <img class="rero-thumb-sm media-object  center-block"" src="/record/{{record.id}}/files/{{thumbnail(record)}}" alt="Document">
           </a>
           <div ng-hide="record.metadata._files" class="text-center">

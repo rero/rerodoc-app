@@ -74,10 +74,10 @@ invenio collections create -q 'specific_collection:"BAA - Bibliographie Hodler"'
 echo "Load data..."
 # invenio utils load $VIRTUAL_ENV/src/rerodoc-app/data/full_book.json
 
-dojson -i $VIRTUAL_ENV/src/rerodoc-app/data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -m 100 --skip --no-files
+#dojson -i $VIRTUAL_ENV/src/rerodoc-app/data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -m 100 --skip --no-files
 #dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load --skip
 
 # invenio index run
-invenio index run -d -c 10
+#invenio index run -d -c 10
 # For data correction
 #dojson -i data/book.xml -l marcxml do book schema http://rerodoc.test.rero.ch/schema/records/book-v0.0.1.json|invenio utils load -vvv -m 500 --no-files

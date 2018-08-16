@@ -26,19 +26,18 @@
 
 from __future__ import absolute_import, print_function
 
-import pkg_resources
 from invenio_records_rest.facets import terms_filter
 from invenio_search import RecordsSearch
-from jsonref import JsonLoader
-from jsonresolver.contrib.jsonref import json_loader_factory
 
 from . import facets
 from .query import search_factory
+from .records.utils import get_file
 
 
 # Identity function for string extraction
 def _(x):
     return x
+
 
 # Default language and timezone
 BABEL_DEFAULT_LANGUAGE = 'en'
@@ -46,7 +45,7 @@ BABEL_DEFAULT_TIMEZONE = 'Europe/Zurich'
 I18N_LANGUAGES = [
     ('fr', _('French')),
     ('de', _('German')),
-    ('it', _('Italian'))
+    ('it', _('Italian')),
 ]
 
 HEADER_TEMPLATE = 'rerodoc_app/header.html'
@@ -69,10 +68,10 @@ SEARCH_UI_SEARCH_TEMPLATE = "rerodoc_app/search_ui.html"
 # SEARCH_UI_HEADER_TEMPLATE = "rerodoc_app/search_header.html"
 SEARCH_UI_JSTEMPLATE_COUNT = 'templates/rerodoc_app/count.html'
 SEARCH_UI_JSTEMPLATE_FACETS = 'templates/rerodoc_app/facets.html'
-SEARCH_UI_JSTEMPLATE_RANGE = \
+SEARCH_UI_JSTEMPLATE_RANGE = (
     'node_modules/invenio-search-js/dist/templates/range.html'
-SEARCH_UI_JSTEMPLATE_RESULTS = \
-    'templates/rerodoc_app/briefview.html'
+)
+SEARCH_UI_JSTEMPLATE_RESULTS = 'templates/rerodoc_app/briefview.html'
 
 JSONSCHEMAS_ENDPOINT = '/schema'
 JSONSCHEMAS_HOST = 'rerodoc.test.rero.ch'
@@ -115,74 +114,87 @@ RECORDS_UI_ENDPOINTS = dict(
     recid=dict(
         pid_type='recid',
         route='/record/<pid_value>',
-        template='rerodoc_app/record_detail.html'
+        template='rerodoc_app/record_detail.html',
     ),
     recid_export=dict(
         pid_type='recid',
-        route='/record/<pid_value>/export/<any({0}):format>'.format(", ".join(
-            list(RERODOC_RECORDS_EXPORTFORMATS.keys()))),
+        route='/record/<pid_value>/export/<any({0}):format>'.format(
+            ", ".join(list(RERODOC_RECORDS_EXPORTFORMATS.keys()))
+        ),
         template='rerodoc_app/record_export.html',
         record_class='invenio_records_files.api:Record',
-        view_imp='rerodoc_app.views.records_ui_export'
+        view_imp='rerodoc_app.views.records_ui_export',
     ),
     recid_files=dict(
         pid_type='recid',
         route='/record/<pid_value>/files/<path:filename>',
         view_imp='invenio_records_files.utils:file_download_ui',
         record_class='invenio_records_files.api:Record',
-    )
+    ),
 )
 
-FILES_REST_PERMISSION_FACTORY = \
+FILES_REST_PERMISSION_FACTORY = (
     'rerodoc_app.records.permissions:files_permission_factory'
+)
 
 BASE_RECID_REST_ENDPOINTS = dict(
-        pid_type='recid',
-        pid_minter='rero_recid',
-        pid_fetcher='rero_recid',
-        # search_type=['record-v1.0.0'],
-        search_class=RecordsSearch,
-        search_factory_imp=search_factory,
-        record_serializers={
-            'application/json': ('invenio_records_rest.serializers'
-                                 ':json_v1_response'),
-            'application/ld+json': ('rerodoc_app.records.serializers'
-                                    ':ld_json_v1_response'),
-            'text/turtle': ('rerodoc_app.records.serializers'
-                            ':ld_turtle_v1_response'),
-            'application/rdf+xml': ('rerodoc_app.records.serializers'
-                                    ':ld_xml_v1_response'),
-            'application/xml': ('rerodoc_app.records.serializers'
-                                ':marcxml_v1_response')
-        },
-        search_serializers={
-            'application/json': (
-                'rerodoc_app.records.serializers.json_serializer'
-                ':json_v1_search'),
-            # 'application/ld+json': ('rerodoc.records.serializers'
-            #                      ':ld_json_v1_search'),
-            # 'text/turtle': ('rerodoc.records.serializers'
-            #                      ':ld_turtle_v1_search'),
-            # 'application/rdf+xml': ('rerodoc.records.serializers'
-            #                      ':ld_xml_v1_search'),
-            # 'application/xml': ('rerodoc.records.serializers'
-            #                      ':marcxml_v1_search'),
-        },
-        default_media_type='application/json',
-        max_result_window=10000,
-     )
+    pid_type='recid',
+    pid_minter='rero_recid',
+    pid_fetcher='rero_recid',
+    # search_type=['record-v1.0.0'],
+    search_class=RecordsSearch,
+    search_factory_imp=search_factory,
+    record_serializers={
+        'application/json': (
+            'invenio_records_rest.serializers' ':json_v1_response'
+        ),
+        'application/ld+json': (
+            'rerodoc_app.records.serializers' ':ld_json_v1_response'
+        ),
+        'text/turtle': (
+            'rerodoc_app.records.serializers' ':ld_turtle_v1_response'
+        ),
+        'application/rdf+xml': (
+            'rerodoc_app.records.serializers' ':ld_xml_v1_response'
+        ),
+        'application/xml': (
+            'rerodoc_app.records.serializers' ':marcxml_v1_response'
+        ),
+    },
+    search_serializers={
+        'application/json': (
+            'rerodoc_app.records.serializers.json_serializer' ':json_v1_search'
+        ),
+        # 'application/ld+json': ('rerodoc.records.serializers'
+        #                      ':ld_json_v1_search'),
+        # 'text/turtle': ('rerodoc.records.serializers'
+        #                      ':ld_turtle_v1_search'),
+        # 'application/rdf+xml': ('rerodoc.records.serializers'
+        #                      ':ld_xml_v1_search'),
+        # 'application/xml': ('rerodoc.records.serializers'
+        #                      ':marcxml_v1_search'),
+    },
+    default_media_type='application/json',
+    max_result_window=10000,
+)
 
 RECORDS_REST_ENDPOINTS = dict(
-    recid=dict(dict(
-        search_index='records',
-        list_route='/record/',
-        item_route='/record/<pid(recid):pid_value>',
-        ), **BASE_RECID_REST_ENDPOINTS),
-    iheid=dict(dict(
-        search_index='iheid',
-        list_route='/iheid/',
-        item_route='/iheid/<pid(recid):pid_value>',
-        ), **BASE_RECID_REST_ENDPOINTS)
+    recid=dict(
+        dict(
+            search_index='records',
+            list_route='/record/',
+            item_route='/record/<pid(recid):pid_value>',
+        ),
+        **BASE_RECID_REST_ENDPOINTS
+    ),
+    iheid=dict(
+        dict(
+            search_index='iheid',
+            list_route='/iheid/',
+            item_route='/iheid/<pid(recid):pid_value>',
+        ),
+        **BASE_RECID_REST_ENDPOINTS
+    ),
 )
 RECORDS_REST_FACETS = dict(
     records=dict(
@@ -192,7 +204,7 @@ RECORDS_REST_FACETS = dict(
             institution=facets.institution,
             language=dict(terms=dict(field='language')),
             contributor=dict(terms=dict(field="facet_contributor")),
-            keyword=dict(terms=dict(field="facet_keyword"))
+            keyword=dict(terms=dict(field="facet_keyword")),
         ),
         filters=dict(
             institution=terms_filter('_collections'),
@@ -201,40 +213,31 @@ RECORDS_REST_FACETS = dict(
             fribourg=terms_filter('_collections'),
             neuchatel_jura=terms_filter('_collections'),
             valais=terms_filter('_collections'),
-
             type=terms_filter('_collections'),
             book=terms_filter('_collections'),
-
             udc=terms_filter('_collections'),
             sciences_exactes_et_naturelles=terms_filter('_collections'),
             sciences_de_la_terre=terms_filter('_collections'),
             geologie=terms_filter('_collections'),
             contributor=terms_filter('facet_contributor'),
             keyword=terms_filter('facet_keyword'),
-            language=terms_filter('language')
+            language=terms_filter('language'),
         ),
     ),
     iheid=dict(
         aggs=dict(
             # specific collection
-            language=dict(
-                terms=dict(field="language"),
-            ),
-            contributor=dict(
-                terms=dict(field="facet_contributor"),
-
-            ),
-            keyword=dict(
-                terms=dict(field="facet_keyword"),
-            )
+            language=dict(terms=dict(field="language")),
+            contributor=dict(terms=dict(field="facet_contributor")),
+            keyword=dict(terms=dict(field="facet_keyword")),
         ),
         filters=dict(
             language=terms_filter('language'),
             contributor=terms_filter('facet_contributor'),
             keyword=terms_filter('facet_keyword'),
-            geneve=terms_filter('_collections')
-        )
-    )
+            geneve=terms_filter('_collections'),
+        ),
+    ),
 )
 # RECORDS_REST_FACETS['records']['aggs'].update(facet_institutions)
 
@@ -245,7 +248,7 @@ RECORDS_REST_SORT_OPTIONS = dict(
             title='Best match',
             default_order='asc',
             order=1,
-            )
+        )
         # ),
         # title=dict(
         #     fields=['title.main.keyword', ],
@@ -268,36 +271,24 @@ RERODOC_APP_OAI_JSONSCHEMA = 'records/book-v0.0.1.json'
 OAISERVER_CONTROL_NUMBER_FETCHER = 'rero_recid'
 OAISERVER_METADATA_FORMATS = {
     'oai_dc': {
-        'serializer': (
-            'rerodoc.records.serializers.oai.dublin_core', {}
-        ),
+        'serializer': ('rerodoc.records.serializers.oai.dublin_core', {}),
         'schema': 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
         'namespace': 'http://www.openarchives.org/OAI/2.0/oai_dc/',
     },
     'marcxml': {
         'serializer': (
-            'invenio_oaiserver.utils:dumps_etree', {
-                'prefix': 'book2marc',
-            }
+            'invenio_oaiserver.utils:dumps_etree',
+            {'prefix': 'book2marc'},
         ),
         'schema': 'http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd',
         'namespace': 'http://www.loc.gov/MARC21/slim',
-    }
+    },
 }
 
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://rerodoc:rerodoc@localhost:5432/rerodoc'  # nopep8
+SQLALCHEMY_DATABASE_URI = (
+    'postgresql+psycopg2://rerodoc:rerodoc@localhost:5432/rerodoc'
+)  # nopep8
 APP_ENABLE_SECURE_HEADERS = 0
 INVENIO_DB_VERSIONING = 0
-
-
-def get_file(url):
-    import re
-    from invenio_pidstore.resolver import Resolver
-    from invenio_records_files.api import Record
-    pid, filename = re.search(r'doc.rero.ch/record/(\w+)/files/(.*)', url).groups()
-    resolver = Resolver('recid', 'rec', Record.get_record)
-    pid, record = resolver.resolve(pid)
-    return record.files[filename].obj.file.storage().fileurl.replace('file://', '')
-
 
 MULTIVIO_FILENAME_TO_PATH = get_file

@@ -30,18 +30,16 @@ from urllib.error import HTTPError
 from urllib.request import urlretrieve
 
 import click
-import PyPDF2
 from flask import current_app
 from invenio_db import db
-from invenio_files_rest.models import Bucket, Location
+from invenio_files_rest.models import Bucket
 from invenio_oaiserver.minters import oaiid_minter
 from invenio_pidstore.errors import PIDDoesNotExistError
-from invenio_pidstore.models import PersistentIdentifier, PIDStatus
+from invenio_pidstore.models import PersistentIdentifier
 from invenio_pidstore.resolver import Resolver
 from invenio_records_files.api import Record
 from invenio_records_files.models import RecordsBuckets
 from jsonschema.exceptions import ValidationError
-from wand.image import Image
 
 
 class Logger(object):
@@ -138,8 +136,8 @@ def load_records_with_files(records, upload_dir, max=0, verbose=0, files=True,
                     rec = Record.create(record, id_=rec_uuid)
 
                     bucket = Bucket.create()
-                    record_buckets = RecordsBuckets.create(record=rec.model,
-                                                           bucket=bucket)
+                    RecordsBuckets.create(record=rec.model,
+                                          bucket=bucket)
                     pid.register()
                     info('%s record created' % rec.get('recid'))
                     oaiid_minter(rec_uuid, rec)
@@ -196,7 +194,6 @@ def append_extracted_text(record, document, upload_dir, force=False):
                      % (n_char, text_filepath))
         if os.path.isfile(text_filepath) and os.path.getsize(text_filepath):
             record.files[text_filename] = open(text_filepath, 'rb')
-            file_obj = record.files[text_filename]
             record.files[text_filename]['filetype'] = 'raw_text'
         else:
             return None
@@ -213,12 +210,10 @@ def append_thumbnail(record, document, upload_dir, force=False):
             thumb_filepath = os.path.join(upload_dir, thumb_filename)
             pdf_filepath = os.path.join(upload_dir, name)
             if not os.path.isfile(thumb_filepath) or force:
-                main_file = record.files[name].file.storage().open()
                 generate_thumbnail(pdf_filepath, thumb_filepath)
                 info('%s generated!' % thumb_filename)
             if os.path.isfile(thumb_filepath):
                 record.files[thumb_filename] = open(thumb_filepath, 'rb')
-                file_obj = record.files[thumb_filename]
                 record.files[thumb_filename]['filetype'] = 'thumb'
         else:
             warning('%s aleary exists!' % thumb_filename)
@@ -242,13 +237,18 @@ def upload_file(url, upload_dir, force=False):
 
 def generate_thumbnail(filename, outfilename=None):
     """Generate a thumnail for a given pdf filename."""
-    img = Image(filename=filename+'[0]', resolution=20)
+    # img = Image(filename=filename+'[0]', resolution=20)
+    # try:
+    #     img.alpha_channel = 'off'
+    #     img.transform(resize='150x150>')
 
+    from invenio_multivio.pdf.api import PDF
     try:
-        img.alpha_channel = 'off'
-        img.transform(resize='150x150>')
+        pdf = PDF(path=filename, page_nr=0)
+        pdf.load()
+        img = pdf.render_page(max_width=80, max_height=80)
 
-    except:
+    except Exception:
         error('image generation failed')
         return None
     if outfilename:
@@ -258,24 +258,44 @@ def generate_thumbnail(filename, outfilename=None):
 
 def extract_text(file, outfilename=None):
     """Extract fulltext from a given pdf file."""
+    from invenio_multivio.pdf.api import PDF
     text = []
     try:
+        pdf = PDF(path=file)
+        pdf.load()
+        text = pdf.get_text_page()
         # doc = slate.PDF(file)
-        doc = PyPDF2.PdfFileReader(file)
-        if doc.isEncrypted:
-            warning('file is encrypted')
-            return []
-        text = []
-        for np in range(doc.getNumPages()):
-            page = doc.getPage(np)
-            text.append(page.extractText())
-    except:
+        # doc = PyPDF2.PdfFileReader(file)
+        # if doc.isEncrypted:
+        #     warning('file is encrypted')
+        #     return []
+        # text = []
+        # for np in range(doc.getNumPages()):
+        #     page = doc.getPage(np)
+        #     text.append(page.extractText())
+    except Exception:
         error('text generation failed')
         pass
     if not text:
-        warning('do not contains text')
+        warning('%s: do not contains text' % file)
         return text
     if outfilename:
         with open(outfilename, 'wb') as of:
             return of.write(bytes(" ".join(text), 'utf-8'))
     return text
+
+
+def get_file(url):
+    """Return a file path given an URL.
+
+    Used by invenio-multivio.
+    """
+    import re
+    from invenio_pidstore.resolver import Resolver
+    from invenio_records_files.api import Record
+    regex = re.search(r'doc.rero.ch/record/(\w+)/files/(.*)', url)
+    pid, filename = regex.groups()
+    resolver = Resolver('recid', 'rec', Record.get_record)
+    pid, record = resolver.resolve(pid)
+    storage = record.files[filename].obj.file.storage()
+    return storage.fileurl.replace('file://', '')
